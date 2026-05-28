@@ -204,6 +204,7 @@
 
             <!-- مؤقت الصلاة -->
             <div class="next-prayer-card" onclick="toggleAllPrayers()">
+                <div style="font-size: 0.9rem; color: var(--primary); margin-bottom: 10px; font-weight: 800;">﴿ إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا ﴾</div>
                 <div class="prayer-name" id="next-prayer-name">جاري الحساب...</div>
                 <div class="prayer-time" id="next-prayer-time">--:--</div>
                 <div class="countdown" id="prayer-countdown">متبقي: --:--:--</div>
@@ -233,15 +234,17 @@
                         <div class="icon-wrapper"><i class="fa-solid fa-book-bookmark"></i></div>
                         <div class="service-title">الأذكار والمكتبة</div>
                     </div>
-                    <div class="service-item" onclick="alert('سيتم إضافة نموذج التواصل مع الإمام قريباً')">
-                        <div class="icon-wrapper"><i class="fa-solid fa-circle-question"></i></div>
+                    <!-- تم استبدال الـ alert هنا بدالة openCrispChat() الخاصة بالشات -->
+                    <div class="service-item" onclick="openCrispChat()">
+                        <div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
                         <div class="service-title">اسأل الإمام</div>
                     </div>
                     <div class="service-item" onclick="alert('للتواصل مع لجنة الصلح في المسجد يرجى التوجه للإدارة، جميع البيانات تُعامل بسرية تامة.')">
                         <div class="icon-wrapper"><i class="fa-solid fa-handshake-angle"></i></div>
                         <div class="service-title">حل النزاعات</div>
                     </div>
-                    <div class="service-item" onclick="alert('حساب التبرعات: 123456789 (بنك مصر)')">
+                    <!-- تم تفعيل زر التبرعات ليفتح الشاشة الجديدة بدلاً من الـ alert -->
+                    <div class="service-item" onclick="switchTab('donations')">
                         <div class="icon-wrapper"><i class="fa-solid fa-hand-holding-heart"></i></div>
                         <div class="service-title">التبرعات</div>
                     </div>
@@ -257,6 +260,85 @@
             </main>
         </div>
 
+        <!-- شاشة التبرعات والمشاريع (الجديدة) مدمجة مع الكود الخاص بك -->
+        <div id="view-donations" class="hidden-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-donations')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">التبرعات والمشاريع</h2>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 25px; font-size: 1.1rem; color: var(--primary); font-weight: 800;">
+                ﴿ وَمَا أَنفَقْتُم مِّن شَيْءٍ فَهُوَ يُخْلِفُهُ ۖ وَهُوَ خَيْرُ الرَّازِقِينَ ﴾
+            </div>
+
+            <!-- مشروعنا الحالي -->
+            <div style="background: linear-gradient(135deg, var(--surface) 0%, #f0fdf4 100%); border-radius: 20px; padding: 25px 20px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(15, 90, 62, 0.08); position: relative; overflow: hidden; border: 1px solid rgba(15, 90, 62, 0.1);">
+                <div style="position: absolute; top: -20px; right: -20px; color: var(--secondary); opacity: 0.1; font-size: 6rem;"><i class="fa-solid fa-mosque"></i></div>
+                <h3 style="color: var(--primary); font-weight: 800; font-size: 1.2rem; margin: 0 0 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fa-solid fa-star" style="color: var(--secondary);"></i> مشروعنا الحالي
+                </h3>
+                <p style="font-weight: 800; font-size: 1.4rem; color: var(--text-main); margin: 0 0 5px;">تجهيزات مصلى العيد</p>
+                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0; font-weight: 600;">ساهم معنا في إدخال الفرحة على المصلين</p>
+            </div>
+
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; padding-right: 10px; border-right: 3px solid var(--primary);">الدفع الإلكتروني:</h3>
+
+            <!-- انستا باي -->
+            <div style="background: #ffffff; border-radius: 16px; padding: 20px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); transition: transform 0.2s;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 50px; height: 50px; background: #e0f2fe; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #0284c7; font-size: 1.5rem;">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: 800; margin:0; color: var(--text-main); font-size: 1rem;">انستا باي (InstaPay)</h3>
+                        <p style="font-size: 1.15rem; margin:2px 0 0; color: var(--text-light); font-weight: 700; letter-spacing: 1px;" id="instapay-num">01027609364</p>
+                    </div>
+                </div>
+                <button onclick="copyToClipboard('instapay-num')" style="background: var(--bg-color); border: 1px solid rgba(0,0,0,0.05); color: var(--primary); width: 40px; height: 40px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;"><i class="fa-regular fa-copy" style="font-size: 1.2rem;"></i></button>
+            </div>
+
+            <!-- فودافون كاش -->
+            <div style="background: #ffffff; border-radius: 16px; padding: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); transition: transform 0.2s;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 50px; height: 50px; background: #fee2e2; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #dc2626; font-size: 1.5rem;">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-weight: 800; margin:0; color: var(--text-main); font-size: 1rem;">فودافون كاش</h3>
+                        <p style="font-size: 1.15rem; margin:2px 0 0; color: var(--text-light); font-weight: 700; letter-spacing: 1px;" id="vcash-num">01027609364</p>
+                    </div>
+                </div>
+                <button onclick="copyToClipboard('vcash-num')" style="background: var(--bg-color); border: 1px solid rgba(0,0,0,0.05); color: var(--primary); width: 40px; height: 40px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;"><i class="fa-regular fa-copy" style="font-size: 1.2rem;"></i></button>
+            </div>
+
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; padding-right: 10px; border-right: 3px solid var(--secondary);">التبرع العيني أو المباشر:</h3>
+            
+            <a href="tel:01027609364" style="text-decoration: none; display: block; margin-bottom: 15px;">
+                <div style="background: #ffffff; border-radius: 16px; padding: 15px 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02);">
+                    <div style="width: 45px; height: 45px; background: rgba(15, 90, 62, 0.1); color: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <div style="flex-grow: 1;">
+                        <h3 style="font-weight: 800; margin:0 0 2px; color: var(--text-main); font-size: 1rem;">إمام المسجد</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin:0; font-weight: 600;">للدفع النقدي المباشر (01027609364)</p>
+                    </div>
+                    <i class="fa-solid fa-phone" style="color: #cbd5e1; font-size: 1.1rem;"></i>
+                </div>
+            </a>
+
+            <a href="tel:01027609364" style="text-decoration: none; display: block;">
+                <div style="background: #ffffff; border-radius: 16px; padding: 15px 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02);">
+                    <div style="width: 45px; height: 45px; background: rgba(212, 175, 55, 0.1); color: var(--secondary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0;"><i class="fa-solid fa-box-open"></i></div>
+                    <div style="flex-grow: 1;">
+                        <h3 style="font-weight: 800; margin:0 0 2px; color: var(--text-main); font-size: 1rem;">أ. شندي</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin:0; font-weight: 600;">للتبرع بوجبات أو ملابس (01027609364)</p>
+                    </div>
+                    <i class="fa-solid fa-phone" style="color: #cbd5e1; font-size: 1.1rem;"></i>
+                </div>
+            </a>
+        </div>
+
         <!-- شاشة صندوق المقترحات الجديدة -->
         <div id="view-suggestions" class="hidden-view" style="padding: 20px;">
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-suggestions')">
@@ -268,6 +350,7 @@
             </div>
             
             <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 15px; cursor: default;">
+                <div style="font-size: 0.95rem; color: var(--primary); font-weight: 800; width: 100%; text-align: center;">﴿ وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ ﴾</div>
                 <p style="font-size: 0.9rem; color: var(--text-light); font-weight: 600; margin: 0; line-height: 1.6;">هذا الصندوق يتمتع بسرية تامة (مجهول الهوية). اكتب مقترحك أو شكواك وسيصل مباشرة للإدارة لتحسين الخدمات.</p>
                 
                 <textarea id="suggestion-text" rows="5" placeholder="اكتب مقترحك هنا بسرية تامة..." style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); font-family: 'Cairo', sans-serif; resize: none; background: var(--bg-color); color: var(--text-main); outline: none;"></textarea>
@@ -286,6 +369,7 @@
         <!-- شاشات دروس العلم والخطب -->
         <div id="view-lessons" class="hidden-view" style="padding: 20px;">
             <h2 class="section-title"><i class="fa-solid fa-book-open"></i> دروس العلم والخطب</h2>
+            <div style="text-align: center; margin-bottom: 20px; font-size: 1rem; color: var(--primary); font-weight: 800;">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</div>
             
             <div class="list-card" onclick="openSeries('seera')">
                 <div class="list-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
@@ -403,7 +487,7 @@
             </div>
         </div>
 
-        <!-- شاشة الحلقات والدورة الصيفية الجديدة -->
+        <!-- شاشة الحلقات والدورة الصيفية -->
         <div id="view-circles" class="hidden-view" style="padding: 20px;">
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-circles')">
                 <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
@@ -413,17 +497,19 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">الحلقات والدورة الصيفية</h2>
             </div>
 
+            <div style="text-align: center; margin-bottom: 20px; font-size: 1rem; color: var(--primary); font-weight: 800;">« خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ »</div>
+
             <!-- تنبيهات الطلاب وأولياء الأمور -->
-            <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; background: #fff5f5; border: 1px solid #fed7d7;">
+            <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; background: #f0fdf4; border: 1px solid #bbf7d0;">
                 <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
-                    <div class="list-icon" style="background: #E53E3E;"><i class="fa-solid fa-circle-exclamation"></i></div>
-                    <h3 style="font-weight: 800; margin:0; font-size: 1.05rem; color: #C53030;">تنبيهات هامة وحازمة</h3>
+                    <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-seedling"></i></div>
+                    <h3 style="font-weight: 800; margin:0; font-size: 1.05rem; color: var(--primary);">آداب وتوجيهات الحلقات</h3>
                 </div>
-                <ul style="margin: 0; padding: 0 20px; font-size: 0.85rem; color: #742A2A; font-weight: 700; line-height: 1.8;">
-                    <li style="margin-bottom: 5px;">عدم التأخر عن موعد الحلقة أو الغياب دون عذر مقبول.</li>
-                    <li style="margin-bottom: 5px;">من يغيب أكثر من ثلاث مرات فهو <span style="text-decoration: underline;">غير مرحب به معنا</span>.</li>
-                    <li style="margin-bottom: 5px;">الالتزام التام بحفظ المقررات المحددة.</li>
-                    <li style="margin-bottom: 5px;">الالتزام بالزي المحدد للمسجد.</li>
+                <ul style="margin: 0; padding: 0 20px; font-size: 0.85rem; color: var(--text-main); font-weight: 700; line-height: 1.8;">
+                    <li style="margin-bottom: 5px;">نرجو الحرص على الحضور في الموعد تقديراً لقيمة مجلس العلم.</li>
+                    <li style="margin-bottom: 5px;">الغياب المتكرر (أكثر من 3 مرات) قد يعيق مسيرة الطالب، لذا نرجو الالتزام لضمان الاستمرار معنا.</li>
+                    <li style="margin-bottom: 5px;">الاجتهاد في حفظ المقررات ومراجعتها يعين الطالب على إتمام ورده بنجاح.</li>
+                    <li style="margin-bottom: 5px;">نأمل الالتزام بزي يليق ببيت الله عز وجل احتراماً لآداب المسجد.</li>
                 </ul>
             </div>
 
@@ -450,6 +536,7 @@
         <!-- شاشة القرآن والتلاوات -->
         <div id="view-quran" class="hidden-view" style="padding: 20px;">
             <h2 class="section-title"><i class="fa-solid fa-headphones"></i> القرآن والتلاوات</h2>
+            <div style="text-align: center; margin-bottom: 20px; font-size: 1rem; color: var(--primary); font-weight: 800;">﴿ فَاقْرَءُوا مَا تَيَسَّرَ مِنَ الْقُرْآنِ ﴾</div>
             
             <div class="quran-grid">
                 <div class="big-card card-green" onclick="openQuranSection('tilawat')">
@@ -552,6 +639,7 @@
         <!-- شاشة المكتبة -->
         <div id="view-library" class="hidden-view" style="padding: 20px;">
             <h2 class="section-title"><i class="fa-solid fa-book-bookmark"></i> المكتبة الإسلامية</h2>
+            <div style="text-align: center; margin-bottom: 20px; font-size: 1rem; color: var(--primary); font-weight: 800;">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
             <div class="list-card" onclick="window.open('https://surahquran.com/quran-search/pdf.html', '_blank')">
                 <div class="list-icon"><i class="fa-solid fa-book-open"></i></div>
                 <div>
@@ -647,6 +735,40 @@
         </nav>
     </div>
 
+    <!-- كود Crisp Chat المخفي (الخاص بأسأل الإمام) -->
+    <script type="text/javascript">
+        window.$crisp=[];
+        window.CRISP_WEBSITE_ID="ab8f9bb0-fb59-4a53-a863-897b64b0dbb5";
+        (function(){
+            d=document;s=d.createElement("script");
+            s.src="https://client.crisp.chat/l.js";
+            s.async=1;d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+
+        // إخفاء الشات فور تحميله
+        $crisp.push(["on", "session:loaded", function() {
+            $crisp.push(["do", "chat:hide"]);
+        }]);
+
+        // إخفاء الشات عندما يقوم المستخدم بإغلاقه
+        $crisp.push(["on", "chat:closed", function() {
+            $crisp.push(["do", "chat:hide"]);
+        }]);
+
+        function openCrispChat() {
+            $crisp.push(["do", "chat:show"]);
+            $crisp.push(["do", "chat:open"]);
+            
+            // رسالة ترحيبية تلقائية تظهر عند فتح الشات لأول مرة
+            if (!window.crispWelcomeShown) {
+                setTimeout(function() {
+                    $crisp.push(["do", "message:show", ["text", "السلام عليكم ورحمة الله وبركاته 🕌\nمرحباً بك في خدمة (اسأل الإمام).\n\nتفضل بكتابة سؤالك أو استفسارك هنا، وسيقوم الإمام بالرد عليك في أقرب وقت إن شاء الله.\n\n(نحيطكم علماً بأن جميع المحادثات تتم بسرية تامة)."]]);
+                }, 1000); // تأخير ثانية واحدة لتبدو واقعية
+                window.crispWelcomeShown = true;
+            }
+        }
+    </script>
+
     <script>
         // إظهار وإخفاء نافذة (عن التطبيق)
         function showAboutModal() {
@@ -680,6 +802,22 @@
             switchTab('home');
         }
 
+        // دالة نسخ النصوص للحافظة (لأرقام التبرعات)
+        function copyToClipboard(elementId) {
+            var text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('تم نسخ الرقم: ' + text);
+            }, function(err) {
+                var textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("Copy");
+                textArea.remove();
+                alert('تم نسخ الرقم: ' + text);
+            });
+        }
+
         // إرسال المقترح في الخلفية بسرية تامة (إلى الإيميل)
         async function sendSuggestionAnonymous() {
             const text = document.getElementById('suggestion-text').value;
@@ -696,9 +834,7 @@
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
-            /* ==========================================
-               مفتاح الوصول (Access Key) الخاص بك
-               ========================================== */
+            /* مفتاح الوصول (Access Key) الخاص بك */
             const accessKey = "1f305b01-4ace-44bb-b98d-38a00e795fa5"; 
 
             try {
@@ -738,7 +874,8 @@
         }
 
         function hideAllMainViews() {
-            const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions'];
+            // تم إضافة view-donations هنا لكي يغلق الشاشات الأخرى عند فتحه
+            const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations'];
             mainViews.forEach(v => { const el = document.getElementById(v); if(el) el.classList.add('hidden-view'); });
             
             document.querySelectorAll('.quran-section-view').forEach(v => v.classList.add('hidden-view'));
@@ -762,7 +899,7 @@
             if(tabName === 'library') document.getElementById('nav-library').classList.add('active');
         }
 
-        // --- نظام السلاسل (القوائم المنسدلة) ---
+        // --- نظام السلاسل (القوائم المنسدلة) الذي صممته أنت ---
         function openSeries(seriesId) {
             document.getElementById('view-lessons').classList.add('hidden-view');
             document.getElementById('view-series-' + seriesId).classList.remove('hidden-view');
