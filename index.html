@@ -29,7 +29,6 @@
         .header-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 2; }
         .mosque-name { font-size: 1.5rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px; }
         
-        /* شريط الأخبار */
         .news-ticker { background-color: var(--surface); padding: 12px 16px; margin: -20px 20px 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); position: relative; z-index: 10; display: flex; align-items: center; gap: 12px; }
         .news-ticker .icon { color: #E53E3E; animation: pulse 2s infinite; }
         .ticker-text { overflow: hidden; white-space: nowrap; width: 100%; direction: ltr; text-align: right; }
@@ -37,7 +36,6 @@
         @keyframes marquee { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
 
-        /* كارت مواقيت الصلاة */
         .next-prayer-card { background: linear-gradient(to right, #ffffff, #f0fdf4); margin: 0 20px 24px; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(15, 90, 62, 0.08); text-align: center; border: 1px solid rgba(15, 90, 62, 0.1); cursor: pointer; }
         .prayer-name { font-size: 1.2rem; color: var(--text-light); margin-bottom: 5px; font-weight: 600; }
         .prayer-time { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 5px; line-height: 1; }
@@ -50,7 +48,6 @@
         .chevron-up { transform: rotate(180deg); }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* الأزرار والخدمات */
         .services-section { padding: 0 20px 30px; }
         .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
@@ -58,7 +55,6 @@
         .icon-wrapper { width: 45px; height: 45px; border-radius: 12px; background-color: rgba(15, 90, 62, 0.05); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--primary); }
         .service-title { font-size: 0.8rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
 
-        /* الشريط السفلي */
         .bottom-nav { position: fixed; bottom: 0; width: 100%; max-width: 480px; background-color: var(--surface); display: flex; justify-content: space-around; padding: 12px 0 20px; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); border-top-left-radius: 20px; border-top-right-radius: 20px; z-index: 100; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 5px; color: var(--text-light); cursor: pointer; width: 25%; }
         .nav-item.active { color: var(--primary); }
@@ -68,12 +64,10 @@
         .spacer { height: 80px; }
         .hidden-view { display: none !important; }
 
-        /* الكروت الداخلية للدروس */
         .list-card { background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 15px; transition: all 0.2s; cursor: pointer; }
         .list-card:active { transform: scale(0.98); background: #f8fafc; }
         .list-icon { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0; }
 
-        /* القائمة الجانبية (الثلاث شرطات) */
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; opacity: 0; transition: opacity 0.3s; }
         .side-menu { position: fixed; top: 0; right: -300px; width: 280px; height: 100%; background: var(--surface); z-index: 1000; box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: right 0.3s ease; display: flex; flex-direction: column; }
         .side-menu.open { right: 0; }
@@ -82,12 +76,10 @@
         .menu-items { padding: 10px 0; overflow-y: auto; flex-grow: 1; }
         .menu-items a { display: flex; align-items: center; gap: 15px; padding: 15px 20px; color: var(--text-main); text-decoration: none; font-weight: 700; font-size: 0.95rem; border-bottom: 1px solid rgba(0,0,0,0.03); }
         
-        /* الحقوق والأسماء المضيئة */
         .credits-section { text-align: center; padding: 20px 15px 10px; font-size: 0.85rem; color: var(--text-light); font-weight: 600; }
         .glowing-name { display: inline-block; margin: 0 3px; color: var(--primary); font-weight: 800; text-decoration: none; animation: textGlow 2s ease-in-out infinite alternate; }
         @keyframes textGlow { from { text-shadow: 0 0 5px rgba(15, 90, 62, 0.2); color: var(--primary); } to { text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); color: #b5952f; } }
 
-        /* زر التفعيل للإعدادات */
         .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
         .switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 34px; }
@@ -95,7 +87,6 @@
         input:checked + .slider { background-color: var(--primary); }
         input:checked + .slider:before { transform: translateX(24px); }
 
-        /* الوضع الليلي */
         body.dark-mode { --bg-color: #121212; --surface: #1e293b; --text-main: #f8fafc; --text-light: #94a3b8; }
         body.dark-mode .list-card { box-shadow: 0 2px 8px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); }
         body.dark-mode .next-prayer-card { background: linear-gradient(to right, #1e293b, #0f2c20); border-color: rgba(255,255,255,0.05); }
@@ -103,13 +94,11 @@
         body.dark-mode select { background: var(--surface) !important; color: var(--text-main) !important; border-color: rgba(255,255,255,0.1) !important; }
         body.dark-mode textarea { border-color: rgba(255,255,255,0.1) !important; }
         
-        /* تنسيقات إضافية لقوائم الدروس */
         .nested-list { list-style: none; padding: 0; margin: 0; padding-right: 15px; border-right: 2px solid var(--secondary); margin-top: 10px; }
         .nested-list li { font-size: 0.9rem; padding: 8px 10px; border-bottom: 1px dashed rgba(0,0,0,0.05); display: flex; align-items: center; gap: 8px; color: var(--text-main); font-weight: 600; cursor: pointer; }
         .nested-list li:last-child { border-bottom: none; }
         body.dark-mode .nested-list li { border-bottom-color: rgba(255,255,255,0.05); }
 
-        /* تنسيق كروت القرآن الكبيرة المزدوجة */
         .quran-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         .big-card { border-radius: 20px; padding: 25px 15px; text-align: center; color: white; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.2s; }
         .big-card:active { transform: scale(0.95); }
@@ -122,7 +111,6 @@
 <body>
 
     <div class="app-container">
-        <!-- القائمة الجانبية -->
         <div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
         <div id="side-menu" class="side-menu">
             <div class="menu-header">
@@ -133,6 +121,7 @@
                 <a href="#" onclick="switchTab('home'); toggleMenu();"><i class="fa-solid fa-house" style="color: var(--primary); width: 20px; text-align: center;"></i> الرئيسية</a>
                 <a href="#" onclick="switchTab('lessons'); toggleMenu();"><i class="fa-solid fa-book-open" style="color: var(--primary); width: 20px; text-align: center;"></i> دروس العلم والخطب</a>
                 <a href="#" onclick="switchTab('circles'); toggleMenu();"><i class="fa-solid fa-children" style="color: var(--primary); width: 20px; text-align: center;"></i> الحلقات والدورة الصيفية</a>
+                <a href="#" onclick="switchTab('sisters'); toggleMenu();"><i class="fa-solid fa-users" style="color: var(--primary); width: 20px; text-align: center;"></i> القسم النسائي</a>
                 <a href="#" onclick="switchTab('activities'); toggleMenu();"><i class="fa-solid fa-chalkboard-user" style="color: var(--primary); width: 20px; text-align: center;"></i> الأنشطة</a>
                 <a href="#" onclick="switchTab('quran'); toggleMenu();"><i class="fa-solid fa-headphones" style="color: var(--primary); width: 20px; text-align: center;"></i> القرآن والتلاوات</a>
                 <a href="#" onclick="switchTab('library'); toggleMenu();"><i class="fa-solid fa-book-bookmark" style="color: var(--primary); width: 20px; text-align: center;"></i> الأذكار والمكتبة</a>
@@ -157,7 +146,6 @@
             </div>
         </div>
 
-        <!-- الهيدر العلوي -->
         <header class="hero-section">
             <div class="header-top" style="align-items: center;">
                 <button onclick="toggleMenu()" style="background: none; border: none; color: white; font-size: 1.6rem; cursor: pointer; padding: 0 0 0 15px;">
@@ -187,13 +175,11 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">سجل الإشعارات</h2>
             </div>
             
-            <!-- سجل الإشعارات نظيف وجاهز للإضافة -->
             <div class="list-card" style="justify-content: center; color: var(--text-light); font-size: 0.95rem; cursor: default;">
                 <i class="fa-regular fa-bell-slash"></i> لا توجد إشعارات جديدة حالياً
             </div>
         </div>
 
-        <!-- الشاشة الرئيسية -->
         <div id="view-home">
             <div class="news-ticker">
                 <i class="fa-solid fa-bell icon"></i>
@@ -204,7 +190,6 @@
 
             <!-- مؤقت الصلاة -->
             <div class="next-prayer-card" onclick="toggleAllPrayers()">
-                <div style="font-size: 0.9rem; color: var(--primary); margin-bottom: 10px; font-weight: 800;">﴿ إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا ﴾</div>
                 <div class="prayer-name" id="next-prayer-name">جاري الحساب...</div>
                 <div class="prayer-time" id="next-prayer-time">--:--</div>
                 <div class="countdown" id="prayer-countdown">متبقي: --:--:--</div>
@@ -224,7 +209,11 @@
                     </div>
                     <div class="service-item" onclick="switchTab('circles')">
                         <div class="icon-wrapper"><i class="fa-solid fa-children"></i></div>
-                        <div class="service-title">الحلقات والدورة الصيفية</div>
+                        <div class="service-title">الحلقات والدورة</div>
+                    </div>
+                    <div class="service-item" onclick="switchTab('sisters')">
+                        <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
+                        <div class="service-title">القسم النسائي</div>
                     </div>
                     <div class="service-item" onclick="switchTab('quran')">
                         <div class="icon-wrapper"><i class="fa-solid fa-headphones"></i></div>
@@ -234,16 +223,14 @@
                         <div class="icon-wrapper"><i class="fa-solid fa-book-bookmark"></i></div>
                         <div class="service-title">الأذكار والمكتبة</div>
                     </div>
-                    <!-- تم استبدال الـ alert هنا بدالة openCrispChat() الخاصة بالشات -->
                     <div class="service-item" onclick="openCrispChat()">
                         <div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
                         <div class="service-title">اسأل الإمام</div>
                     </div>
-                    <div class="service-item" onclick="alert('للتواصل مع لجنة الصلح في المسجد يرجى التوجه للإدارة، جميع البيانات تُعامل بسرية تامة.')">
+                    <div class="service-item" onclick="switchTab('reconciliation')">
                         <div class="icon-wrapper"><i class="fa-solid fa-handshake-angle"></i></div>
                         <div class="service-title">حل النزاعات</div>
                     </div>
-                    <!-- تم تفعيل زر التبرعات ليفتح الشاشة الجديدة بدلاً من الـ alert -->
                     <div class="service-item" onclick="switchTab('donations')">
                         <div class="icon-wrapper"><i class="fa-solid fa-hand-holding-heart"></i></div>
                         <div class="service-title">التبرعات</div>
@@ -252,15 +239,94 @@
                         <div class="icon-wrapper"><i class="fa-regular fa-lightbulb"></i></div>
                         <div class="service-title">المقترحات</div>
                     </div>
-                    <div class="service-item" onclick="window.open('https://maps.app.goo.gl/5dwPQGzrVk8uPBN2A', '_blank')">
-                        <div class="icon-wrapper"><i class="fa-solid fa-map-location-dot"></i></div>
-                        <div class="service-title">موقع المسجد</div>
-                    </div>
                 </div>
             </main>
         </div>
 
-        <!-- شاشة التبرعات والمشاريع (الجديدة) مدمجة مع الكود الخاص بك -->
+        <!-- شاشة حل النزاعات -->
+        <div id="view-reconciliation" class="hidden-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-reconciliation')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">حل النزاعات والترابط الأسري</h2>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 25px; font-size: 1.1rem; color: var(--primary); font-weight: 800;">
+                ﴿ وَالصُّلْحُ خَيْرٌ ﴾
+            </div>
+
+            <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; border: 1px solid rgba(15, 90, 62, 0.1);">
+                <p style="font-size: 0.95rem; color: var(--text-main); margin: 0; font-weight: 600; line-height: 1.7;">
+                    انطلاقاً من دور المسجد في بناء المجتمع، نقدم خدمة <strong>الإصلاح ذات البين، وحل النزاعات، والإرشاد الأسري</strong> للحفاظ على الترابط والمودة بين العائلات.
+                </p>
+                <div style="background: #f0fdf4; padding: 10px; border-radius: 10px; width: 100%; border: 1px dashed var(--primary); margin-top: 5px;">
+                    <p style="font-size: 0.85rem; color: var(--primary); margin: 0; font-weight: 700;">
+                        <i class="fa-solid fa-shield-halved"></i> نضمن لكم السرية التامة والخصوصية الكاملة في عرض مشكلاتكم.
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; margin-top: 20px; padding-right: 10px; border-right: 3px solid var(--primary);">للتواصل المباشر:</h3>
+            
+            <a href="tel:01027609364" style="text-decoration: none; display: block;">
+                <div style="background: #ffffff; border-radius: 16px; padding: 15px 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); transition: transform 0.2s;">
+                    <div style="width: 45px; height: 45px; background: rgba(15, 90, 62, 0.1); color: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0;"><i class="fa-solid fa-phone"></i></div>
+                    <div style="flex-grow: 1;">
+                        <h3 style="font-weight: 800; margin:0 0 2px; color: var(--text-main); font-size: 1rem;">إمام المسجد</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-light); margin:0; font-weight: 600;">01027609364</p>
+                    </div>
+                    <div style="background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">اتصال</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- شاشة القسم النسائي -->
+        <div id="view-sisters" class="hidden-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-sisters')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">القسم النسائي</h2>
+            </div>
+
+            <!-- مواعيد المصلى -->
+            <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; border: 1px solid rgba(15, 90, 62, 0.1);">
+                <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+                    <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-door-open"></i></div>
+                    <h3 style="font-weight: 800; margin:0; font-size: 1.05rem;">مواعيد فتح المصلى</h3>
+                </div>
+                <div style="padding-right: 10px; border-right: 2px solid var(--primary); margin-top: 5px;">
+                    <p style="font-size: 0.9rem; color: var(--text-main); margin: 0 0 5px; font-weight: 700;"><i class="fa-solid fa-check" style="color: var(--primary); width: 20px;"></i> صلاة الجمعة وصلاة التراويح</p>
+                    <p style="font-size: 0.9rem; color: var(--text-main); margin: 0 0 5px; font-weight: 700;"><i class="fa-solid fa-check" style="color: var(--primary); width: 20px;"></i> مجالس العلم المخصصة للنساء</p>
+                </div>
+            </div>
+
+            <!-- حلقات النساء -->
+            <div class="list-card" style="cursor: default;">
+                <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-book-quran"></i></div>
+                <div>
+                    <h3 style="font-weight: 700; margin:0;">مقرأة الأخوات</h3>
+                    <p style="font-size: 0.85rem; color: gray; margin:0;">لتصحيح التلاوة والحفظ (قريباً)</p>
+                </div>
+            </div>
+
+            <!-- خصوصية الأسئلة -->
+            <div style="background: rgba(15, 90, 62, 0.05); border: 1px dashed var(--primary); padding: 15px; border-radius: 15px; font-size: 0.9rem; color: var(--text-main); font-weight: 700; display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; cursor: pointer; transition: transform 0.2s;" onclick="openCrispChat()">
+                <i class="fa-solid fa-shield-halved" style="color: var(--primary); font-size: 1.5rem; margin-top: 3px;"></i>
+                <div style="line-height: 1.6;">
+                    <span style="color: var(--primary); font-weight: 800; display: block; margin-bottom: 3px;">اسألي الإمام (بسرية تامة)</span>
+                    نراعي خصوصية الأخوات؛ يمكنكِ طرح أي سؤال فقهي أو خاص عبر الشات المباشر دون الحاجة لذكر الاسم أو الرقم.
+                    <div style="margin-top: 8px; color: var(--secondary); font-size: 0.85rem; display: flex; align-items: center; gap: 5px;">
+                        <i class="fa-solid fa-comment-dots"></i> اضغطي هنا لفتح المحادثة
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة التبرعات والمشاريع -->
         <div id="view-donations" class="hidden-view" style="padding: 20px;">
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-donations')">
                 <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
@@ -339,7 +405,7 @@
             </a>
         </div>
 
-        <!-- شاشة صندوق المقترحات الجديدة -->
+        <!-- شاشة صندوق المقترحات -->
         <div id="view-suggestions" class="hidden-view" style="padding: 20px;">
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-suggestions')">
                 <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
@@ -713,8 +779,6 @@
             <i class="fa-solid fa-code" style="color: var(--secondary); margin-bottom: 5px;"></i><br>
             إعداد وتطوير التطبيق<br>
             <a href="https://www.facebook.com/share/14crpmWoo4H/" target="_blank" class="glowing-name">محمد عبد الوهاب</a> 
-            <span style="color: #ccc;">|</span> 
-            <a href="https://www.facebook.com/share/17q26iu37F/" target="_blank" class="glowing-name">معاذ مصطفى</a>
         </div>
 
         <div class="spacer"></div>
@@ -874,8 +938,8 @@
         }
 
         function hideAllMainViews() {
-            // تم إضافة view-donations هنا لكي يغلق الشاشات الأخرى عند فتحه
-            const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations'];
+            // تم إضافة view-sisters و view-reconciliation هنا لكي يغلق الشاشات الأخرى عند فتحه
+            const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-reconciliation'];
             mainViews.forEach(v => { const el = document.getElementById(v); if(el) el.classList.add('hidden-view'); });
             
             document.querySelectorAll('.quran-section-view').forEach(v => v.classList.add('hidden-view'));
