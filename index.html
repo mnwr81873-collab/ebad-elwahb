@@ -209,7 +209,7 @@
                     </div>
                     <div class="service-item" onclick="switchTab('circles')">
                         <div class="icon-wrapper"><i class="fa-solid fa-children"></i></div>
-                        <div class="service-title">الحلقات والدورة</div>
+                        <div class="service-title">الحلقات والدورة الصيفية</div>
                     </div>
                     <div class="service-item" onclick="switchTab('sisters')">
                         <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
@@ -852,12 +852,14 @@
             document.getElementById('view-notifications').classList.remove('hidden-view');
             // إخفاء العداد الأحمر عند قراءة الإشعارات
             document.getElementById('notif-badge').style.display = 'none';
+            window.scrollTo(0, 0);
         }
 
         // دالة فتح صندوق المقترحات
         function openSuggestions() {
             hideAllMainViews();
             document.getElementById('view-suggestions').classList.remove('hidden-view');
+            window.scrollTo(0, 0);
         }
 
         // دالة الرجوع من أي شاشة فرعية إلى الرئيسية
@@ -938,7 +940,7 @@
         }
 
         function hideAllMainViews() {
-            // تم إضافة view-sisters و view-reconciliation هنا لكي يغلق الشاشات الأخرى عند فتحه
+            // تم إضافة view-sisters هنا لكي يغلق الشاشات الأخرى عند فتحه
             const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-reconciliation'];
             mainViews.forEach(v => { const el = document.getElementById(v); if(el) el.classList.add('hidden-view'); });
             
@@ -961,34 +963,42 @@
             if(tabName === 'activities' || tabName === 'lessons' || tabName === 'circles') document.getElementById('nav-activities').classList.add('active');
             if(tabName === 'quran') document.getElementById('nav-quran').classList.add('active');
             if(tabName === 'library') document.getElementById('nav-library').classList.add('active');
+            
+            window.scrollTo(0, 0);
         }
 
         // --- نظام السلاسل (القوائم المنسدلة) الذي صممته أنت ---
         function openSeries(seriesId) {
             document.getElementById('view-lessons').classList.add('hidden-view');
             document.getElementById('view-series-' + seriesId).classList.remove('hidden-view');
+            window.scrollTo(0, 0);
         }
         function goBackToLessons() {
             document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
             document.getElementById('view-lessons').classList.remove('hidden-view');
+            window.scrollTo(0, 0);
         }
 
         // --- نظام التصفح المتعدد لأقسام القرآن ---
         function openQuranSection(sectionId) {
             document.getElementById('view-quran').classList.add('hidden-view');
             document.getElementById('view-quran-section-' + sectionId).classList.remove('hidden-view');
+            window.scrollTo(0, 0);
         }
         function goBackToQuranMain() {
             document.querySelectorAll('.quran-section-view').forEach(v => v.classList.add('hidden-view'));
             document.getElementById('view-quran').classList.remove('hidden-view');
+            window.scrollTo(0, 0);
         }
         function openQuranSeries(seriesId) {
             document.querySelectorAll('.quran-section-view').forEach(v => v.classList.add('hidden-view'));
             document.getElementById('view-quran-series-' + seriesId).classList.remove('hidden-view');
+            window.scrollTo(0, 0);
         }
         function goBackToQuranSection(sectionId) {
             document.querySelectorAll('.quran-series-view').forEach(v => v.classList.add('hidden-view'));
             document.getElementById('view-quran-section-' + sectionId).classList.remove('hidden-view');
+            window.scrollTo(0, 0);
         }
 
         // تفعيل الوضع الليلي
