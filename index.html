@@ -29,6 +29,7 @@
         .header-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 2; }
         .mosque-name { font-size: 1.5rem; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px; }
         
+        /* شريط الأخبار */
         .news-ticker { background-color: var(--surface); padding: 12px 16px; margin: -20px 20px 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); position: relative; z-index: 10; display: flex; align-items: center; gap: 12px; }
         .news-ticker .icon { color: #E53E3E; animation: pulse 2s infinite; }
         .ticker-text { overflow: hidden; white-space: nowrap; width: 100%; direction: ltr; text-align: right; }
@@ -36,6 +37,7 @@
         @keyframes marquee { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
 
+        /* كارت مواقيت الصلاة */
         .next-prayer-card { background: linear-gradient(to right, #ffffff, #f0fdf4); margin: 0 20px 24px; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(15, 90, 62, 0.08); text-align: center; border: 1px solid rgba(15, 90, 62, 0.1); cursor: pointer; }
         .prayer-name { font-size: 1.2rem; color: var(--text-light); margin-bottom: 5px; font-weight: 600; }
         .prayer-time { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 5px; line-height: 1; }
@@ -48,6 +50,7 @@
         .chevron-up { transform: rotate(180deg); }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* الأزرار والخدمات */
         .services-section { padding: 0 20px 30px; }
         .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
@@ -55,6 +58,7 @@
         .icon-wrapper { width: 45px; height: 45px; border-radius: 12px; background-color: rgba(15, 90, 62, 0.05); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--primary); }
         .service-title { font-size: 0.8rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
 
+        /* الشريط السفلي */
         .bottom-nav { position: fixed; bottom: 0; width: 100%; max-width: 480px; background-color: var(--surface); display: flex; justify-content: space-around; padding: 12px 0 20px; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); border-top-left-radius: 20px; border-top-right-radius: 20px; z-index: 100; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 5px; color: var(--text-light); cursor: pointer; width: 25%; }
         .nav-item.active { color: var(--primary); }
@@ -64,10 +68,12 @@
         .spacer { height: 80px; }
         .hidden-view { display: none !important; }
 
+        /* الكروت الداخلية للدروس */
         .list-card { background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 15px; transition: all 0.2s; cursor: pointer; }
         .list-card:active { transform: scale(0.98); background: #f8fafc; }
         .list-icon { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0; }
 
+        /* القائمة الجانبية (الثلاث شرطات) */
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; opacity: 0; transition: opacity 0.3s; }
         .side-menu { position: fixed; top: 0; right: -300px; width: 280px; height: 100%; background: var(--surface); z-index: 1000; box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: right 0.3s ease; display: flex; flex-direction: column; }
         .side-menu.open { right: 0; }
@@ -76,10 +82,12 @@
         .menu-items { padding: 10px 0; overflow-y: auto; flex-grow: 1; }
         .menu-items a { display: flex; align-items: center; gap: 15px; padding: 15px 20px; color: var(--text-main); text-decoration: none; font-weight: 700; font-size: 0.95rem; border-bottom: 1px solid rgba(0,0,0,0.03); }
         
+        /* الحقوق والأسماء المضيئة */
         .credits-section { text-align: center; padding: 20px 15px 10px; font-size: 0.85rem; color: var(--text-light); font-weight: 600; }
         .glowing-name { display: inline-block; margin: 0 3px; color: var(--primary); font-weight: 800; text-decoration: none; animation: textGlow 2s ease-in-out infinite alternate; }
         @keyframes textGlow { from { text-shadow: 0 0 5px rgba(15, 90, 62, 0.2); color: var(--primary); } to { text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); color: #b5952f; } }
 
+        /* زر التفعيل للإعدادات */
         .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
         .switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 34px; }
@@ -87,18 +95,21 @@
         input:checked + .slider { background-color: var(--primary); }
         input:checked + .slider:before { transform: translateX(24px); }
 
+        /* الوضع الليلي */
         body.dark-mode { --bg-color: #121212; --surface: #1e293b; --text-main: #f8fafc; --text-light: #94a3b8; }
         body.dark-mode .list-card { box-shadow: 0 2px 8px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); }
         body.dark-mode .next-prayer-card { background: linear-gradient(to right, #1e293b, #0f2c20); border-color: rgba(255,255,255,0.05); }
         body.dark-mode .bottom-nav { border-top: 1px solid rgba(255,255,255,0.05); }
         body.dark-mode select { background: var(--surface) !important; color: var(--text-main) !important; border-color: rgba(255,255,255,0.1) !important; }
-        body.dark-mode textarea { border-color: rgba(255,255,255,0.1) !important; }
+        body.dark-mode textarea, body.dark-mode input { border-color: rgba(255,255,255,0.1) !important; }
         
+        /* تنسيقات إضافية لقوائم الدروس */
         .nested-list { list-style: none; padding: 0; margin: 0; padding-right: 15px; border-right: 2px solid var(--secondary); margin-top: 10px; }
         .nested-list li { font-size: 0.9rem; padding: 8px 10px; border-bottom: 1px dashed rgba(0,0,0,0.05); display: flex; align-items: center; gap: 8px; color: var(--text-main); font-weight: 600; cursor: pointer; }
         .nested-list li:last-child { border-bottom: none; }
         body.dark-mode .nested-list li { border-bottom-color: rgba(255,255,255,0.05); }
 
+        /* تنسيق كروت القرآن الكبيرة المزدوجة */
         .quran-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         .big-card { border-radius: 20px; padding: 25px 15px; text-align: center; color: white; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.2s; }
         .big-card:active { transform: scale(0.95); }
@@ -106,11 +117,36 @@
         .big-card-title { font-weight: 800; font-size: 1.2rem; margin: 0; }
         .card-green { background: linear-gradient(135deg, var(--primary), #1a7451); box-shadow: 0 4px 15px rgba(15, 90, 62, 0.2); }
         .card-gold { background: linear-gradient(135deg, var(--secondary), #b5952f); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); }
+        
+        /* Video Container for responsive iframe */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* Custom scrollbar for comments */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(15, 90, 62, 0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(15, 90, 62, 0.5); }
     </style>
 </head>
 <body>
 
     <div class="app-container">
+        <!-- القائمة الجانبية -->
         <div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
         <div id="side-menu" class="side-menu">
             <div class="menu-header">
@@ -146,6 +182,7 @@
             </div>
         </div>
 
+        <!-- الهيدر العلوي -->
         <header class="hero-section">
             <div class="header-top" style="align-items: center;">
                 <button onclick="toggleMenu()" style="background: none; border: none; color: white; font-size: 1.6rem; cursor: pointer; padding: 0 0 0 15px;">
@@ -175,16 +212,18 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">سجل الإشعارات</h2>
             </div>
             
+            <!-- سجل الإشعارات نظيف وجاهز للإضافة -->
             <div class="list-card" style="justify-content: center; color: var(--text-light); font-size: 0.95rem; cursor: default;">
                 <i class="fa-regular fa-bell-slash"></i> لا توجد إشعارات جديدة حالياً
             </div>
         </div>
 
+        <!-- الشاشة الرئيسية -->
         <div id="view-home">
             <div class="news-ticker">
                 <i class="fa-solid fa-bell icon"></i>
                 <div class="ticker-text">
-                    <span id="news-text">خطبة الجمعة غدا ان شاء الله عن الامانة...</span>
+                    <span id="news-text">أهلاً بكم في تطبيق مسجد عباد الوهاب - يتم تحديث مواقيت الصلاة تلقائياً...</span>
                 </div>
             </div>
 
@@ -205,7 +244,7 @@
                 <div class="services-grid">
                     <div class="service-item" onclick="switchTab('lessons')">
                         <div class="icon-wrapper"><i class="fa-solid fa-book-open"></i></div>
-                        <div class="service-title">الدروس</div>
+                        <div class="service-title">الدروس والخطب</div>
                     </div>
                     <div class="service-item" onclick="switchTab('circles')">
                         <div class="icon-wrapper"><i class="fa-solid fa-children"></i></div>
@@ -227,7 +266,7 @@
                         <div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
                         <div class="service-title">اسأل الإمام</div>
                     </div>
-                    <div class="service-item" onclick="switchTab('reconciliation')">
+                    <div class="service-item" onclick="switchTab('disputes')">
                         <div class="icon-wrapper"><i class="fa-solid fa-handshake-angle"></i></div>
                         <div class="service-title">حل النزاعات</div>
                     </div>
@@ -243,45 +282,6 @@
             </main>
         </div>
 
-        <!-- شاشة حل النزاعات -->
-        <div id="view-reconciliation" class="hidden-view" style="padding: 20px;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-reconciliation')">
-                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
-                    <i class="fa-solid fa-arrow-right"></i>
-                    <span style="font-size: 0.9rem;">رجوع</span>
-                </div>
-                <h2 class="section-title" style="margin: 0; color: var(--text-main);">حل النزاعات والترابط الأسري</h2>
-            </div>
-
-            <div style="text-align: center; margin-bottom: 25px; font-size: 1.1rem; color: var(--primary); font-weight: 800;">
-                ﴿ وَالصُّلْحُ خَيْرٌ ﴾
-            </div>
-
-            <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; border: 1px solid rgba(15, 90, 62, 0.1);">
-                <p style="font-size: 0.95rem; color: var(--text-main); margin: 0; font-weight: 600; line-height: 1.7;">
-                    انطلاقاً من دور المسجد في بناء المجتمع، نقدم خدمة <strong>الإصلاح ذات البين، وحل النزاعات، والإرشاد الأسري</strong> للحفاظ على الترابط والمودة بين العائلات.
-                </p>
-                <div style="background: #f0fdf4; padding: 10px; border-radius: 10px; width: 100%; border: 1px dashed var(--primary); margin-top: 5px;">
-                    <p style="font-size: 0.85rem; color: var(--primary); margin: 0; font-weight: 700;">
-                        <i class="fa-solid fa-shield-halved"></i> نضمن لكم السرية التامة والخصوصية الكاملة في عرض مشكلاتكم.
-                    </p>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; margin-top: 20px; padding-right: 10px; border-right: 3px solid var(--primary);">للتواصل المباشر:</h3>
-            
-            <a href="tel:01027609364" style="text-decoration: none; display: block;">
-                <div style="background: #ffffff; border-radius: 16px; padding: 15px 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); transition: transform 0.2s;">
-                    <div style="width: 45px; height: 45px; background: rgba(15, 90, 62, 0.1); color: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0;"><i class="fa-solid fa-phone"></i></div>
-                    <div style="flex-grow: 1;">
-                        <h3 style="font-weight: 800; margin:0 0 2px; color: var(--text-main); font-size: 1rem;">إمام المسجد</h3>
-                        <p style="font-size: 0.85rem; color: var(--text-light); margin:0; font-weight: 600;">01027609364</p>
-                    </div>
-                    <div style="background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">اتصال</div>
-                </div>
-            </a>
-        </div>
-
         <!-- شاشة القسم النسائي -->
         <div id="view-sisters" class="hidden-view" style="padding: 20px;">
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-sisters')">
@@ -291,14 +291,14 @@
                 </div>
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">القسم النسائي</h2>
             </div>
-
+            
             <!-- مواعيد المصلى -->
-            <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; border: 1px solid rgba(15, 90, 62, 0.1);">
+            <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; border: 1px solid rgba(15, 90, 62, 0.1); background: linear-gradient(to bottom left, #ffffff, #f0fdf4);">
                 <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
                     <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-door-open"></i></div>
-                    <h3 style="font-weight: 800; margin:0; font-size: 1.05rem;">مواعيد فتح المصلى</h3>
+                    <h3 style="font-weight: 800; margin:0; font-size: 1.05rem; color: var(--primary);">مواعيد فتح المصلى</h3>
                 </div>
-                <div style="padding-right: 10px; border-right: 2px solid var(--primary); margin-top: 5px;">
+                <div style="padding-right: 10px; border-right: 2px solid var(--secondary); margin-top: 5px;">
                     <p style="font-size: 0.9rem; color: var(--text-main); margin: 0 0 5px; font-weight: 700;"><i class="fa-solid fa-check" style="color: var(--primary); width: 20px;"></i> صلاة الجمعة وصلاة التراويح</p>
                     <p style="font-size: 0.9rem; color: var(--text-main); margin: 0 0 5px; font-weight: 700;"><i class="fa-solid fa-check" style="color: var(--primary); width: 20px;"></i> مجالس العلم المخصصة للنساء</p>
                 </div>
@@ -313,7 +313,7 @@
                 </div>
             </div>
 
-            <!-- خصوصية الأسئلة -->
+            <!-- خصوصية الأسئلة (مربوطة بالشات) -->
             <div style="background: rgba(15, 90, 62, 0.05); border: 1px dashed var(--primary); padding: 15px; border-radius: 15px; font-size: 0.9rem; color: var(--text-main); font-weight: 700; display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; cursor: pointer; transition: transform 0.2s;" onclick="openCrispChat()">
                 <i class="fa-solid fa-shield-halved" style="color: var(--primary); font-size: 1.5rem; margin-top: 3px;"></i>
                 <div style="line-height: 1.6;">
@@ -326,6 +326,39 @@
             </div>
         </div>
 
+        <!-- شاشة حل النزاعات -->
+        <div id="view-disputes" class="hidden-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-disputes')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">حل النزاعات</h2>
+            </div>
+            
+            <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 15px; cursor: default; background: #ffffff; border: 1px solid rgba(0,0,0,0.05);">
+                <p style="font-size: 0.95rem; color: var(--text-main); font-weight: 700; margin: 0; line-height: 1.8;">
+                    انطلاقاً من دور المسجد في بناء المجتمع، نقدم خدمة الإصلاح ذات البين، وحل النزاعات، وتعزيز الترابط الأسري.
+                </p>
+                <div style="background: rgba(212, 175, 55, 0.1); padding: 10px; border-radius: 10px; border-right: 3px solid var(--secondary); font-size: 0.85rem; color: var(--text-light); font-weight: 600; width: 100%;">
+                    نؤكد لكم أن جميع المشاكل والبيانات تُعامل <span style="color: var(--primary); font-weight: 800;">بسرية تامة</span> ولا يُطلع عليها سوى الإمام ولجنة الصلح المختصة.
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin: 20px 0 15px; padding-right: 10px; border-right: 3px solid var(--primary);">للتواصل وتحديد موعد:</h3>
+            
+            <a href="tel:01027609364" style="text-decoration: none; display: block;">
+                <div style="background: var(--primary); border-radius: 16px; padding: 15px 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 15px rgba(15, 90, 62, 0.2); color: white; transition: transform 0.2s;">
+                    <div style="width: 45px; height: 45px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0;"><i class="fa-solid fa-phone"></i></div>
+                    <div style="flex-grow: 1;">
+                        <h3 style="font-weight: 800; margin:0 0 2px; font-size: 1rem;">إمام المسجد</h3>
+                        <p style="font-size: 1.1rem; margin:0; font-weight: 700; letter-spacing: 1px; direction: ltr; text-align: right;">01027609364</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-left" style="color: rgba(255, 255, 255, 0.5); font-size: 1.1rem;"></i>
+                </div>
+            </a>
+        </div>
+
         <!-- شاشة التبرعات والمشاريع -->
         <div id="view-donations" class="hidden-view" style="padding: 20px;">
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-donations')">
@@ -334,10 +367,6 @@
                     <span style="font-size: 0.9rem;">رجوع</span>
                 </div>
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">التبرعات والمشاريع</h2>
-            </div>
-            
-            <div style="text-align: center; margin-bottom: 25px; font-size: 1.1rem; color: var(--primary); font-weight: 800;">
-                ﴿ وَمَا أَنفَقْتُم مِّن شَيْءٍ فَهُوَ يُخْلِفُهُ ۖ وَهُوَ خَيْرُ الرَّازِقِينَ ﴾
             </div>
 
             <!-- مشروعنا الحالي -->
@@ -416,7 +445,6 @@
             </div>
             
             <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 15px; cursor: default;">
-                <div style="font-size: 0.95rem; color: var(--primary); font-weight: 800; width: 100%; text-align: center;">﴿ وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ ﴾</div>
                 <p style="font-size: 0.9rem; color: var(--text-light); font-weight: 600; margin: 0; line-height: 1.6;">هذا الصندوق يتمتع بسرية تامة (مجهول الهوية). اكتب مقترحك أو شكواك وسيصل مباشرة للإدارة لتحسين الخدمات.</p>
                 
                 <textarea id="suggestion-text" rows="5" placeholder="اكتب مقترحك هنا بسرية تامة..." style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); font-family: 'Cairo', sans-serif; resize: none; background: var(--bg-color); color: var(--text-main); outline: none;"></textarea>
@@ -435,8 +463,16 @@
         <!-- شاشات دروس العلم والخطب -->
         <div id="view-lessons" class="hidden-view" style="padding: 20px;">
             <h2 class="section-title"><i class="fa-solid fa-book-open"></i> دروس العلم والخطب</h2>
-            <div style="text-align: center; margin-bottom: 20px; font-size: 1rem; color: var(--primary); font-weight: 800;">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</div>
             
+            <div class="list-card" onclick="openSeries('jumuah')">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0;">خطب الجمعة</h3>
+                    <p style="font-size: 0.85rem; color: gray; margin:0;">تسجيلات منبر المسجد</p>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
+            </div>
+
             <div class="list-card" onclick="openSeries('seera')">
                 <div class="list-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
                 <div style="flex-grow: 1;">
@@ -474,6 +510,78 @@
         </div>
 
         <!-- الشاشات الفرعية للدروس -->
+        
+        <!-- قائمة خطب الجمعة -->
+        <div id="view-series-jumuah" class="hidden-view series-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToLessons()">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">خطب الجمعة</h2>
+            </div>
+            
+            <!-- عنصر في قائمة الخطب -->
+            <div class="list-card" onclick="openSermonDetails('sermon-1')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">«النصوص الشرعية بين الفهم الصحيح وسوء التأويل»</h3>
+                    <p style="font-size: 0.8rem; color: gray; margin: 0; margin-top: 3px;"><i class="fa-regular fa-calendar"></i> 22 شوال 1447 | 10 أبريل 2026</p>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
+            </div>
+            
+            <!-- يمكنك إضافة المزيد من الخطب هنا بتكرار الكود السابق -->
+        </div>
+
+        <!-- شاشة عرض تفاصيل الخطبة والتعليقات -->
+        <div id="view-sermon-details" class="hidden-view series-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToJumuahList()">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main); font-size: 1.05rem;">تفاصيل الخطبة</h2>
+            </div>
+            
+            <!-- قسم الفيديو -->
+            <div style="background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
+                <!-- مشغل اليوتيوب المدمج -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/zfWGpC8emv4" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div style="margin-top: 15px;">
+                    <h3 style="font-weight: 800; font-size: 1.1rem; color: var(--text-main); margin: 0 0 8px; line-height: 1.5;">«النصوص الشرعية بين الفهم الصحيح وسوء التأويل»</h3>
+                    <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-light); font-weight: 600;">
+                        <div style="background: rgba(15, 90, 62, 0.05); color: var(--primary); padding: 4px 10px; border-radius: 8px; display: flex; align-items: center; gap: 5px;">
+                            <i class="fa-solid fa-moon"></i> 22 شوال 1447
+                        </div>
+                        <div style="background: rgba(0, 0, 0, 0.03); padding: 4px 10px; border-radius: 8px; display: flex; align-items: center; gap: 5px;">
+                            <i class="fa-solid fa-calendar-days"></i> 10 أبريل 2026
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم التعليقات -->
+            <div style="background: var(--surface); border-radius: 15px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
+                <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-regular fa-comments"></i> التعليقات والفوائد
+                </h3>
+                
+                <div id="comments-list" style="max-height: 250px; overflow-y: auto; margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; padding-right: 5px;">
+                    <!-- سيتم تحميل التعليقات هنا بواسطة الجافاسكريبت -->
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="new-comment-input" placeholder="أضف تعليقاً أو فائدة من الخطبة..." style="flex-grow: 1; padding: 12px 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); font-family: 'Cairo', sans-serif; outline: none; font-size: 0.9rem; background: var(--bg-color); color: var(--text-main);">
+                    <button onclick="addComment()" style="background: var(--primary); color: white; border: none; border-radius: 12px; width: 45px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;">
+                        <i class="fa-solid fa-paper-plane" style="font-size: 1.1rem;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div id="view-series-seera" class="hidden-view series-view" style="padding: 20px;">
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToLessons()">
                 <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
@@ -563,8 +671,6 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">الحلقات والدورة الصيفية</h2>
             </div>
 
-            <div style="text-align: center; margin-bottom: 20px; font-size: 1rem; color: var(--primary); font-weight: 800;">« خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ »</div>
-
             <!-- تنبيهات الطلاب وأولياء الأمور -->
             <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; background: #f0fdf4; border: 1px solid #bbf7d0;">
                 <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
@@ -595,14 +701,13 @@
             <!-- إشعار التحديثات -->
             <div style="background: rgba(212, 175, 55, 0.1); border: 1px dashed var(--secondary); padding: 12px 15px; border-radius: 12px; font-size: 0.85rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                 <i class="fa-solid fa-bell" style="color: var(--secondary); font-size: 1.3rem;"></i>
-                <span style="line-height: 1.5;">أي تعديل في المواعيد أو إلغاء أو تأجيل سيكون موجوداً هنا في التطبيق.</span>
+                <span style="line-height: 1.5;">أي تغيير للمواعيد أو إلغاء سيكون هنا في التطبيق.</span>
             </div>
         </div>
 
         <!-- شاشة القرآن والتلاوات -->
         <div id="view-quran" class="hidden-view" style="padding: 20px;">
             <h2 class="section-title"><i class="fa-solid fa-headphones"></i> القرآن والتلاوات</h2>
-            <div style="text-align: center; margin-bottom: 20px; font-size: 1rem; color: var(--primary); font-weight: 800;">﴿ فَاقْرَءُوا مَا تَيَسَّرَ مِنَ الْقُرْآنِ ﴾</div>
             
             <div class="quran-grid">
                 <div class="big-card card-green" onclick="openQuranSection('tilawat')">
@@ -705,7 +810,6 @@
         <!-- شاشة المكتبة -->
         <div id="view-library" class="hidden-view" style="padding: 20px;">
             <h2 class="section-title"><i class="fa-solid fa-book-bookmark"></i> المكتبة الإسلامية</h2>
-            <div style="text-align: center; margin-bottom: 20px; font-size: 1rem; color: var(--primary); font-weight: 800;">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
             <div class="list-card" onclick="window.open('https://surahquran.com/quran-search/pdf.html', '_blank')">
                 <div class="list-icon"><i class="fa-solid fa-book-open"></i></div>
                 <div>
@@ -852,14 +956,14 @@
             document.getElementById('view-notifications').classList.remove('hidden-view');
             // إخفاء العداد الأحمر عند قراءة الإشعارات
             document.getElementById('notif-badge').style.display = 'none';
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
         }
 
         // دالة فتح صندوق المقترحات
         function openSuggestions() {
             hideAllMainViews();
             document.getElementById('view-suggestions').classList.remove('hidden-view');
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
         }
 
         // دالة الرجوع من أي شاشة فرعية إلى الرئيسية
@@ -940,13 +1044,17 @@
         }
 
         function hideAllMainViews() {
-            // تم إضافة view-sisters هنا لكي يغلق الشاشات الأخرى عند فتحه
-            const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-reconciliation'];
+            // الشاشات الرئيسية
+            const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes'];
             mainViews.forEach(v => { const el = document.getElementById(v); if(el) el.classList.add('hidden-view'); });
             
             document.querySelectorAll('.quran-section-view').forEach(v => v.classList.add('hidden-view'));
             document.querySelectorAll('.quran-series-view').forEach(v => v.classList.add('hidden-view'));
             document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
+            
+            // إخفاء شاشة تفاصيل الخطبة
+            const sermonDetails = document.getElementById('view-sermon-details');
+            if(sermonDetails) sermonDetails.classList.add('hidden-view');
             
             ['nav-home', 'nav-activities', 'nav-quran', 'nav-library'].forEach(id => {
                 const el = document.getElementById(id);
@@ -958,25 +1066,80 @@
         function switchTab(tabName) {
             hideAllMainViews();
             document.getElementById('view-' + tabName).classList.remove('hidden-view');
+            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
             
             if(tabName === 'home') document.getElementById('nav-home').classList.add('active');
             if(tabName === 'activities' || tabName === 'lessons' || tabName === 'circles') document.getElementById('nav-activities').classList.add('active');
             if(tabName === 'quran') document.getElementById('nav-quran').classList.add('active');
             if(tabName === 'library') document.getElementById('nav-library').classList.add('active');
-            
-            window.scrollTo(0, 0);
         }
 
-        // --- نظام السلاسل (القوائم المنسدلة) الذي صممته أنت ---
+        // --- نظام السلاسل (القوائم المنسدلة) ---
         function openSeries(seriesId) {
             document.getElementById('view-lessons').classList.add('hidden-view');
             document.getElementById('view-series-' + seriesId).classList.remove('hidden-view');
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
         }
         function goBackToLessons() {
             document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
+            // التأكد من إخفاء شاشة تفاصيل الخطبة عند الرجوع
+            document.getElementById('view-sermon-details').classList.add('hidden-view');
             document.getElementById('view-lessons').classList.remove('hidden-view');
             window.scrollTo(0, 0);
+        }
+
+        // --- نظام فتح تفاصيل خطبة معينة ---
+        let currentSermonId = 'sermon-1';
+
+        function openSermonDetails(sermonId) {
+            document.getElementById('view-series-jumuah').classList.add('hidden-view');
+            document.getElementById('view-sermon-details').classList.remove('hidden-view');
+            window.scrollTo(0, 0);
+            currentSermonId = sermonId;
+            loadComments(sermonId);
+        }
+
+        function goBackToJumuahList() {
+            document.getElementById('view-sermon-details').classList.add('hidden-view');
+            document.getElementById('view-series-jumuah').classList.remove('hidden-view');
+            window.scrollTo(0, 0);
+        }
+
+        // --- نظام التعليقات المحلي ---
+        function loadComments(sermonId) {
+            const commentsList = document.getElementById('comments-list');
+            const comments = JSON.parse(localStorage.getItem('comments_' + sermonId)) || [];
+            
+            if (comments.length === 0) {
+                commentsList.innerHTML = '<div style="text-align: center; color: var(--text-light); font-size: 0.85rem; padding: 10px;">لا توجد تعليقات بعد. كن أول من يعلق!</div>';
+                return;
+            }
+            
+            commentsList.innerHTML = comments.map(c => `
+                <div style="background: var(--bg-color); padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.03);">
+                    <div style="font-weight: 800; font-size: 0.85rem; color: var(--primary); margin-bottom: 4px;">
+                        <i class="fa-solid fa-user-circle" style="opacity: 0.7;"></i> ${c.name}
+                    </div>
+                    <div style="font-size: 0.9rem; color: var(--text-main); line-height: 1.5;">${c.text}</div>
+                </div>
+            `).join('');
+            
+            // النزول لأسفل القائمة لرؤية أحدث تعليق
+            commentsList.scrollTop = commentsList.scrollHeight;
+        }
+
+        function addComment() {
+            const input = document.getElementById('new-comment-input');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            const comments = JSON.parse(localStorage.getItem('comments_' + currentSermonId)) || [];
+            // إضافة التعليق الجديد
+            comments.push({ name: 'مُصلي', text: text });
+            localStorage.setItem('comments_' + currentSermonId, JSON.stringify(comments));
+            
+            input.value = '';
+            loadComments(currentSermonId);
         }
 
         // --- نظام التصفح المتعدد لأقسام القرآن ---
