@@ -223,7 +223,7 @@
             <div class="news-ticker">
                 <i class="fa-solid fa-bell icon"></i>
                 <div class="ticker-text">
-                    <span id="news-text">أبسم الله الرحمن الرحيم الرحيم...</span>
+                    <span id="news-text">أهلاً بكم في تطبيق مسجد عباد الوهاب - يتم تحديث مواقيت الصلاة تلقائياً...</span>
                 </div>
             </div>
 
@@ -795,21 +795,29 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">تلاوات الشيخ فرحات</h2>
             </div>
             
-            <!-- مشغل صوتي 1 (الشيخ فرحات) -->
-            <div style="background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                    <div style="width: 45px; height: 45px; background: rgba(212, 175, 55, 0.1); color: var(--secondary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0;">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-weight: 800; font-size: 1rem; color: var(--text-main); margin: 0 0 3px;">سورة هود</h3>
-                        <p style="font-size: 0.8rem; color: var(--text-light); margin: 0;">الشيخ فرحات</p>
-                    </div>
+            <!-- قائمة السور (الشيخ فرحات) -->
+            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة هود', 'https://a.top4top.io/m_3802sxyma1.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة هود</h3>
                 </div>
-                <audio controls style="width: 100%; height: 40px; border-radius: 8px;">
-                    <source src="https://a.top4top.io/m_3802sxyma1.m4a" type="audio/mp4">
-                    متصفحك لا يدعم مشغل الصوت.
-                </audio>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
+            </div>
+
+            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة ص', 'https://b.top4top.io/m_38024s75z2.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة ص</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
+            </div>
+
+            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة الزمر (الآية 1 إلى 31)', 'https://a.top4top.io/m_380221f421.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة الزمر (الآية 1 إلى 31)</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
         </div>
 
@@ -823,6 +831,35 @@
             </div>
             <div class="list-card" style="justify-content: center; color: var(--text-light); font-size: 0.95rem; cursor: default;">
                 <i class="fa-regular fa-clock"></i> سيتم إضافة المحتوى قريباً...
+            </div>
+        </div>
+
+        <!-- شاشة المشغل الصوتي المشترك -->
+        <div id="view-audio-player" class="hidden-view quran-series-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackFromAudioPlayer()">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">الاستماع للتلاوة</h2>
+            </div>
+            
+            <div style="background: var(--surface); border-radius: 15px; padding: 30px 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
+                <div style="width: 80px; height: 80px; background: rgba(212, 175, 55, 0.1); color: var(--secondary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2.5rem; margin: 0 auto 20px;">
+                    <i class="fa-solid fa-headphones"></i>
+                </div>
+                <h3 id="audio-player-title" style="font-weight: 800; font-size: 1.3rem; color: var(--text-main); margin: 0 0 5px;">اسم السورة</h3>
+                <p style="font-size: 0.9rem; color: var(--text-light); font-weight: 600; margin: 0 0 20px;">تلاوة خاشعة</p>
+                
+                <audio id="main-audio-player" controls style="width: 100%; height: 45px; border-radius: 8px;">
+                    <source id="main-audio-source" src="" type="audio/mp4">
+                    متصفحك لا يدعم مشغل الصوت.
+                </audio>
+
+                <!-- زر التحميل الإجباري -->
+                <a id="audio-download-btn" href="#" onclick="forceDownloadAudio(event)" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--primary); color: white; padding: 12px 20px; border-radius: 12px; text-decoration: none; font-weight: 700; margin-top: 20px; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(15, 90, 62, 0.2); transition: transform 0.2s;">
+                    <i class="fa-solid fa-download"></i> تحميل التلاوة
+                </a>
             </div>
         </div>
 
@@ -1063,6 +1100,10 @@
         }
 
         function hideAllMainViews() {
+            // إيقاف الصوت لو شغال
+            const player = document.getElementById('main-audio-player');
+            if(player) player.pause();
+            
             // الشاشات الرئيسية
             const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes'];
             mainViews.forEach(v => { const el = document.getElementById(v); if(el) el.classList.add('hidden-view'); });
@@ -1074,6 +1115,10 @@
             // إخفاء شاشة تفاصيل الخطبة
             const sermonDetails = document.getElementById('view-sermon-details');
             if(sermonDetails) sermonDetails.classList.add('hidden-view');
+            
+            // إخفاء شاشة مشغل الصوت
+            const audioPlayerView = document.getElementById('view-audio-player');
+            if(audioPlayerView) audioPlayerView.classList.add('hidden-view');
             
             ['nav-home', 'nav-activities', 'nav-quran', 'nav-library'].forEach(id => {
                 const el = document.getElementById(id);
@@ -1180,6 +1225,109 @@
         function goBackToQuranSection(sectionId) {
             document.querySelectorAll('.quran-series-view').forEach(v => v.classList.add('hidden-view'));
             document.getElementById('view-quran-section-' + sectionId).classList.remove('hidden-view');
+            window.scrollTo(0, 0);
+        }
+
+        // --- نظام تشغيل وتحميل الصوتيات ---
+        let currentAudioSheikh = '';
+        let currentAudioUrl = '';
+        let currentAudioTitle = '';
+        
+        function openAudioPlayer(sheikh, title, url) {
+            currentAudioSheikh = sheikh;
+            currentAudioUrl = url;
+            currentAudioTitle = title;
+            
+            // تحديث البيانات
+            document.getElementById('audio-player-title').innerText = title;
+            const player = document.getElementById('main-audio-player');
+            const source = document.getElementById('main-audio-source');
+            const downloadBtn = document.getElementById('audio-download-btn');
+            
+            source.src = url;
+            if (downloadBtn) {
+                downloadBtn.href = url; // تحديث رابط زر التحميل
+            }
+
+            player.load(); // تحميل الصوت الجديد
+            
+            // تم إيقاف التشغيل التلقائي ليقوم المستخدم بالتشغيل يدوياً
+            // player.play(); 
+            
+            // التنقل
+            document.querySelectorAll('.quran-series-view').forEach(v => v.classList.add('hidden-view'));
+            document.getElementById('view-audio-player').classList.remove('hidden-view');
+            window.scrollTo(0, 0);
+        }
+
+        // دالة التحميل الإجباري للملفات
+        async function forceDownloadAudio(e) {
+            e.preventDefault();
+            const btn = document.getElementById('audio-download-btn');
+            const originalHTML = '<i class="fa-solid fa-download"></i> تحميل التلاوة';
+            
+            try {
+                // تغيير شكل الزرار
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري التحميل...';
+                btn.style.opacity = '0.7';
+                btn.style.pointerEvents = 'none';
+                
+                // جلب الملف كـ Blob
+                const response = await fetch(currentAudioUrl);
+                if (!response.ok) throw new Error("Network error");
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                
+                // إنشاء رابط مؤقت للتحميل
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                
+                // تحديد امتداد الملف
+                let ext = currentAudioUrl.split('.').pop() || 'm4a';
+                if(ext.includes('?')) ext = ext.split('?')[0];
+                if(ext.length > 4) ext = 'm4a'; // تأمين الامتداد
+                
+                link.download = currentAudioTitle + '.' + ext;
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(blobUrl);
+                
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> بدأ التنزيل بنجاح';
+            } catch (error) {
+                // حل بديل (Fallback) لو السيرفر مانع التحميل المباشر بسبب الـ CORS
+                const link = document.createElement('a');
+                link.href = currentAudioUrl;
+                link.download = currentAudioTitle;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                btn.innerHTML = originalHTML;
+            }
+            
+            // إرجاع الزرار لأصله بعد 3 ثواني
+            setTimeout(() => { 
+                btn.innerHTML = originalHTML; 
+                btn.style.opacity = '1';
+                btn.style.pointerEvents = 'auto';
+            }, 3000);
+        }
+        
+        function goBackFromAudioPlayer() {
+            // إيقاف الصوت عند الرجوع
+            const player = document.getElementById('main-audio-player');
+            player.pause();
+            
+            document.getElementById('view-audio-player').classList.add('hidden-view');
+            
+            if (currentAudioSheikh === 'farhat') {
+                document.getElementById('view-quran-series-recitations-farhat').classList.remove('hidden-view');
+            } else if (currentAudioSheikh === 'ahmed') {
+                document.getElementById('view-quran-series-recitations-ahmed').classList.remove('hidden-view');
+            }
             window.scrollTo(0, 0);
         }
 
