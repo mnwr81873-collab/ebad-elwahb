@@ -1447,6 +1447,160 @@
 
         fetchPrayerTimes();
         setInterval(updatePrayerTimer, 1000);
+
+        // ==========================================
+        // نظام زر الرجوع للهاتف (Hardware Back Button)
+        // ==========================================
+        window.history.pushState({ app: 'running' }, '', '');
+
+        let backPressCount = 0;
+        let backPressTimer;
+
+        window.addEventListener('popstate', function(event) {
+            const sideMenu = document.getElementById('side-menu');
+            const aboutModal = document.getElementById('about-modal');
+            const audioPlayer = document.getElementById('view-audio-player');
+            const sermonDetails = document.getElementById('view-sermon-details');
+            
+            let actionTaken = false;
+
+            // 1. القائمة الجانبية
+            if (sideMenu && sideMenu.classList.contains('open')) {
+                toggleMenu();
+                actionTaken = true;
+            }
+            // 2. نافذة (عن التطبيق)
+            else if (aboutModal && aboutModal.style.display === 'flex') {
+                closeAboutModal();
+                actionTaken = true;
+            }
+            // 3. المشغل الصوتي
+            else if (audioPlayer && !audioPlayer.classList.contains('hidden-view')) {
+                goBackFromAudioPlayer();
+                actionTaken = true;
+            }
+            // 4. تفاصيل الخطبة
+            else if (sermonDetails && !sermonDetails.classList.contains('hidden-view')) {
+                goBackToJumuahList();
+                actionTaken = true;
+            }
+            // 5. قوائم السلاسل (داخل الدروس)
+            else {
+                const seriesViews = document.querySelectorAll('.series-view:not(#view-sermon-details)');
+                for(let v of seriesViews) {
+                    if (!v.classList.contains('hidden-view')) {
+                        goBackToLessons();
+                        actionTaken = true;
+                        break;
+                    }
+                }
+            }
+            
+            // 6. قوائم القرآن الداخلية
+            if (!actionTaken) {
+                const quranSeriesViews = document.querySelectorAll('.quran-series-view:not(#view-audio-player)');
+                for(let v of quranSeriesViews) {
+                    if (!v.classList.contains('hidden-view')) {
+                        if (v.id.includes('tajweed')) goBackToQuranSection('sciences');
+                        else goBackToQuranSection('tilawat');
+                        actionTaken = true;
+                        break;
+                    }
+                }
+            }
+            
+            // 7. أقسام القرآن الرئيسية
+            if (!actionTaken) {
+                const quranSectionViews = document.querySelectorAll('.quran-section-view');
+                for(let v of quranSectionViews) {
+                    if (!v.classList.contains('hidden-view')) {
+                        goBackToQuranMain();
+                        actionTaken = true;
+                        break;
+                    }
+                }
+            }
+            
+            // 8. الصفحات الفرعية من الرئيسية
+            if (!actionTaken) {
+                const nonTabViews = ['view-circles', 'view-lessons', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes'];
+                for(let v of nonTabViews) {
+                    const el = document.getElementById(v);
+                    if (el && !el.classList.contains('hidden-view')) {
+                        goBackToHome(v);
+                        actionTaken = true;
+                        break;
+                    }
+                }
+            }
+            
+            // 9. التابات السفلية (ما عدا الرئيسية)
+            if (!actionTaken) {
+                const otherTabs = ['view-activities', 'view-quran', 'view-library'];
+                for(let v of otherTabs) {
+                    const el = document.getElementById(v);
+                    if (el && !el.classList.contains('hidden-view')) {
+                        switchTab('home');
+                        actionTaken = true;
+                        break;
+                    }
+                }
+            }
+            
+            // 10. الشاشة الرئيسية (الخروج من التطبيق)
+            if (!actionTaken) {
+                if (backPressCount === 0) {
+                    backPressCount++;
+                    showToast("اضغط مرة أخرى للخروج من التطبيق");
+                    
+                    // إعادة دفع الحالة عشان ميقفلش
+                    window.history.pushState({ app: 'running' }, '', '');
+                    
+                    backPressTimer = setTimeout(() => {
+                        backPressCount = 0;
+                    }, 2000);
+                } else {
+                    // الخروج الفعلي
+                    clearTimeout(backPressTimer);
+                    window.history.back(); 
+                }
+            } else {
+                // لو قمنا بأي أكشن (قفلنا شاشة)، نرجع نحط State تاني عشان نحتفظ بنظام الرجوع
+                window.history.pushState({ app: 'running' }, '', '');
+            }
+        });
+        
+        function showToast(message) {
+            let toast = document.getElementById('exit-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'exit-toast';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '80px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                toast.style.color = 'white';
+                toast.style.padding = '10px 20px';
+                toast.style.borderRadius = '20px';
+                toast.style.fontSize = '0.9rem';
+                toast.style.fontWeight = 'bold';
+                toast.style.zIndex = '9999';
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                document.body.appendChild(toast);
+            }
+            toast.innerText = message;
+            toast.style.display = 'block';
+            
+            void toast.offsetWidth; // Trigger reflow
+            toast.style.opacity = '1';
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => { toast.style.display = 'none'; }, 300);
+            }, 2000);
+        }
     </script>
 </body>
 </html>
