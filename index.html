@@ -154,17 +154,17 @@
                 <button onclick="toggleMenu()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="menu-items">
-                <a href="#" onclick="switchTab('home'); toggleMenu();"><i class="fa-solid fa-house" style="color: var(--primary); width: 20px; text-align: center;"></i> الرئيسية</a>
-                <a href="#" onclick="switchTab('lessons'); toggleMenu();"><i class="fa-solid fa-book-open" style="color: var(--primary); width: 20px; text-align: center;"></i> دروس العلم والخطب</a>
-                <a href="#" onclick="switchTab('circles'); toggleMenu();"><i class="fa-solid fa-children" style="color: var(--primary); width: 20px; text-align: center;"></i> الحلقات والدورة الصيفية</a>
-                <a href="#" onclick="switchTab('sisters'); toggleMenu();"><i class="fa-solid fa-users" style="color: var(--primary); width: 20px; text-align: center;"></i> القسم النسائي</a>
-                <a href="#" onclick="switchTab('activities'); toggleMenu();"><i class="fa-solid fa-chalkboard-user" style="color: var(--primary); width: 20px; text-align: center;"></i> الأنشطة</a>
-                <a href="#" onclick="switchTab('quran'); toggleMenu();"><i class="fa-solid fa-headphones" style="color: var(--primary); width: 20px; text-align: center;"></i> القرآن والتلاوات</a>
-                <a href="#" onclick="switchTab('library'); toggleMenu();"><i class="fa-solid fa-book-bookmark" style="color: var(--primary); width: 20px; text-align: center;"></i> الأذكار والمكتبة</a>
+                <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu();"><i class="fa-solid fa-house" style="color: var(--primary); width: 20px; text-align: center;"></i> الرئيسية</a>
+                <a href="javascript:void(0)" onclick="switchTab('lessons'); toggleMenu();"><i class="fa-solid fa-book-open" style="color: var(--primary); width: 20px; text-align: center;"></i> دروس العلم والخطب</a>
+                <a href="javascript:void(0)" onclick="switchTab('circles'); toggleMenu();"><i class="fa-solid fa-children" style="color: var(--primary); width: 20px; text-align: center;"></i> الحلقات والدورة الصيفية</a>
+                <a href="javascript:void(0)" onclick="switchTab('sisters'); toggleMenu();"><i class="fa-solid fa-users" style="color: var(--primary); width: 20px; text-align: center;"></i> القسم النسائي</a>
+                <a href="javascript:void(0)" onclick="switchTab('activities'); toggleMenu();"><i class="fa-solid fa-chalkboard-user" style="color: var(--primary); width: 20px; text-align: center;"></i> الأنشطة</a>
+                <a href="javascript:void(0)" onclick="switchTab('quran'); toggleMenu();"><i class="fa-solid fa-headphones" style="color: var(--primary); width: 20px; text-align: center;"></i> القرآن والتلاوات</a>
+                <a href="javascript:void(0)" onclick="switchTab('library'); toggleMenu();"><i class="fa-solid fa-book-bookmark" style="color: var(--primary); width: 20px; text-align: center;"></i> الأذكار والمكتبة</a>
                 <hr style="border: 0; height: 5px; background: var(--bg-color); margin: 0;">
-                <a href="#" onclick="switchTab('settings'); toggleMenu();"><i class="fa-solid fa-gear" style="color: var(--primary); width: 20px; text-align: center;"></i> إعدادات التطبيق</a>
+                <a href="javascript:void(0)" onclick="switchTab('settings'); toggleMenu();"><i class="fa-solid fa-gear" style="color: var(--primary); width: 20px; text-align: center;"></i> إعدادات التطبيق</a>
                 <a href="https://maps.app.goo.gl/5dwPQGzrVk8uPBN2A" target="_blank" onclick="toggleMenu();"><i class="fa-solid fa-map-location-dot" style="color: var(--primary); width: 20px; text-align: center;"></i> موقع المسجد</a>
-                <a href="#" onclick="showAboutModal(); toggleMenu();"><i class="fa-solid fa-circle-info" style="color: var(--primary); width: 20px; text-align: center;"></i> عن التطبيق</a>
+                <a href="javascript:void(0)" onclick="showAboutModal(); toggleMenu();"><i class="fa-solid fa-circle-info" style="color: var(--primary); width: 20px; text-align: center;"></i> عن التطبيق</a>
             </div>
         </div>
 
@@ -466,7 +466,13 @@
 
         <!-- شاشات دروس العلم والخطب -->
         <div id="view-lessons" class="hidden-view" style="padding: 20px;">
-            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> دروس العلم والخطب</h2>
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-lessons')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);"><i class="fa-solid fa-book-open"></i> دروس العلم والخطب</h2>
+            </div>
             
             <div class="list-card" onclick="openSeries('jumuah')">
                 <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
@@ -711,7 +717,13 @@
 
         <!-- شاشة القرآن والتلاوات -->
         <div id="view-quran" class="hidden-view" style="padding: 20px;">
-            <h2 class="section-title"><i class="fa-solid fa-headphones"></i> القرآن والتلاوات</h2>
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-quran')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);"><i class="fa-solid fa-headphones"></i> القرآن والتلاوات</h2>
+            </div>
             
             <div class="quran-grid">
                 <div class="big-card card-green" onclick="openQuranSection('tilawat')">
@@ -865,7 +877,14 @@
 
         <!-- شاشة المكتبة -->
         <div id="view-library" class="hidden-view" style="padding: 20px;">
-            <h2 class="section-title"><i class="fa-solid fa-book-bookmark"></i> المكتبة الإسلامية</h2>
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-library')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);"><i class="fa-solid fa-book-bookmark"></i> المكتبة الإسلامية</h2>
+            </div>
+
             <div class="list-card" onclick="window.open('https://surahquran.com/quran-search/pdf.html', '_blank')">
                 <div class="list-icon"><i class="fa-solid fa-book-open"></i></div>
                 <div>
@@ -887,7 +906,13 @@
 
         <!-- شاشة الإعدادات -->
         <div id="view-settings" class="hidden-view" style="padding: 20px;">
-            <h2 class="section-title"><i class="fa-solid fa-gear"></i> إعدادات التطبيق</h2>
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-settings')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);"><i class="fa-solid fa-gear"></i> إعدادات التطبيق</h2>
+            </div>
             
             <div class="list-card" style="justify-content: space-between; cursor: default;">
                 <div style="display: flex; align-items: center; gap: 15px;">
@@ -1133,7 +1158,7 @@
             window.scrollTo(0, 0); // الصعود لأعلى الشاشة
             
             if(tabName === 'home') document.getElementById('nav-home').classList.add('active');
-            if(tabName === 'activities' || tabName === 'lessons' || tabName === 'circles') document.getElementById('nav-activities').classList.add('active');
+            if(tabName === 'activities') document.getElementById('nav-activities').classList.add('active');
             if(tabName === 'quran') document.getElementById('nav-quran').classList.add('active');
             if(tabName === 'library') document.getElementById('nav-library').classList.add('active');
         }
