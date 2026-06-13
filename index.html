@@ -73,9 +73,9 @@
         .list-card:active { transform: scale(0.98); background: #f8fafc; }
         .list-icon { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; flex-shrink: 0; }
 
-        /* القائمة الجانبية (الثلاث شرطات) */
+        /* القائمة الجانبية (تم التعديل لإخفائها بالكامل) */
         .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; opacity: 0; transition: opacity 0.3s; }
-        .side-menu { position: fixed; top: 0; right: -300px; width: 280px; height: 100%; background: var(--surface); z-index: 1000; box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: right 0.3s ease; display: flex; flex-direction: column; }
+        .side-menu { position: fixed; top: 0; right: -400px; width: 280px; height: 100%; background: var(--surface); z-index: 1000; box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: right 0.3s ease; display: flex; flex-direction: column; }
         .side-menu.open { right: 0; }
         .menu-overlay.open { display: block; opacity: 1; }
         .menu-header { background: var(--primary); color: white; padding: 25px 20px; display: flex; justify-content: space-between; align-items: center; }
@@ -141,12 +141,42 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(15, 90, 62, 0.2); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(15, 90, 62, 0.5); }
+
+        /* ==========================================
+           تعديلات التجاوب (Responsive) للتابلت والشاشات الكبيرة
+           ========================================== */
+        @media (min-width: 481px) {
+            .app-container { max-width: 100%; }
+            .bottom-nav { max-width: 100%; }
+            .services-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
+            .service-item { padding: 25px 10px; }
+            .icon-wrapper { width: 65px; height: 65px; font-size: 1.8rem; }
+            .service-title { font-size: 1.1rem; }
+            .mosque-name { font-size: 2rem; }
+            .next-prayer-card { padding: 40px; margin: 0 40px 30px; }
+            .prayer-time { font-size: 4.5rem; }
+            .countdown { font-size: 1.3rem; padding: 8px 20px; }
+            .nav-item i { font-size: 1.6rem; }
+            .nav-item.active i { transform: scale(1.2); }
+            .nav-item span { font-size: 1rem; margin-top: 5px; }
+            .quran-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+            .big-card { padding: 40px 20px; }
+            .big-card-icon { font-size: 4rem; }
+            .big-card-title { font-size: 1.5rem; }
+            .side-menu { width: 350px; }
+        }
+
+        @media (min-width: 1025px) {
+            .app-container { max-width: 1024px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.08); }
+            .bottom-nav { max-width: 1024px; left: 50%; transform: translateX(-50%); }
+            .hero-section { padding: 4rem 3rem 3rem; }
+        }
     </style>
 </head>
 <body>
 
     <div class="app-container">
-        <!-- القائمة الجانبية -->
+        <!-- القائمة الجانبية المحدثة لتعمل بشكل آمن مع الـ APK -->
         <div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
         <div id="side-menu" class="side-menu">
             <div class="menu-header">
@@ -154,17 +184,17 @@
                 <button onclick="toggleMenu()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="menu-items">
-                <a href="javascript:void(0)" onclick="switchTab('home'); toggleMenu();"><i class="fa-solid fa-house" style="color: var(--primary); width: 20px; text-align: center;"></i> الرئيسية</a>
-                <a href="javascript:void(0)" onclick="switchTab('lessons'); toggleMenu();"><i class="fa-solid fa-book-open" style="color: var(--primary); width: 20px; text-align: center;"></i> دروس العلم والخطب</a>
-                <a href="javascript:void(0)" onclick="switchTab('circles'); toggleMenu();"><i class="fa-solid fa-children" style="color: var(--primary); width: 20px; text-align: center;"></i> الحلقات والدورة الصيفية</a>
-                <a href="javascript:void(0)" onclick="switchTab('sisters'); toggleMenu();"><i class="fa-solid fa-users" style="color: var(--primary); width: 20px; text-align: center;"></i> القسم النسائي</a>
-                <a href="javascript:void(0)" onclick="switchTab('activities'); toggleMenu();"><i class="fa-solid fa-chalkboard-user" style="color: var(--primary); width: 20px; text-align: center;"></i> الأنشطة</a>
-                <a href="javascript:void(0)" onclick="switchTab('quran'); toggleMenu();"><i class="fa-solid fa-headphones" style="color: var(--primary); width: 20px; text-align: center;"></i> القرآن والتلاوات</a>
-                <a href="javascript:void(0)" onclick="switchTab('library'); toggleMenu();"><i class="fa-solid fa-book-bookmark" style="color: var(--primary); width: 20px; text-align: center;"></i> الأذكار والمكتبة</a>
+                <a style="cursor: pointer;" onclick="switchTab('home'); toggleMenu();"><i class="fa-solid fa-house" style="color: var(--primary); width: 20px; text-align: center;"></i> الرئيسية</a>
+                <a style="cursor: pointer;" onclick="switchTab('lessons'); toggleMenu();"><i class="fa-solid fa-book-open" style="color: var(--primary); width: 20px; text-align: center;"></i> دروس العلم والخطب</a>
+                <a style="cursor: pointer;" onclick="switchTab('circles'); toggleMenu();"><i class="fa-solid fa-children" style="color: var(--primary); width: 20px; text-align: center;"></i> الحلقات والدورة الصيفية</a>
+                <a style="cursor: pointer;" onclick="switchTab('sisters'); toggleMenu();"><i class="fa-solid fa-users" style="color: var(--primary); width: 20px; text-align: center;"></i> القسم النسائي</a>
+                <a style="cursor: pointer;" onclick="switchTab('activities'); toggleMenu();"><i class="fa-solid fa-chalkboard-user" style="color: var(--primary); width: 20px; text-align: center;"></i> الأنشطة</a>
+                <a style="cursor: pointer;" onclick="switchTab('quran'); toggleMenu();"><i class="fa-solid fa-headphones" style="color: var(--primary); width: 20px; text-align: center;"></i> القرآن والتلاوات</a>
+                <a style="cursor: pointer;" onclick="switchTab('library'); toggleMenu();"><i class="fa-solid fa-book-bookmark" style="color: var(--primary); width: 20px; text-align: center;"></i> الأذكار والمكتبة</a>
                 <hr style="border: 0; height: 5px; background: var(--bg-color); margin: 0;">
-                <a href="javascript:void(0)" onclick="switchTab('settings'); toggleMenu();"><i class="fa-solid fa-gear" style="color: var(--primary); width: 20px; text-align: center;"></i> إعدادات التطبيق</a>
+                <a style="cursor: pointer;" onclick="switchTab('settings'); toggleMenu();"><i class="fa-solid fa-gear" style="color: var(--primary); width: 20px; text-align: center;"></i> إعدادات التطبيق</a>
                 <a href="https://maps.app.goo.gl/5dwPQGzrVk8uPBN2A" target="_blank" onclick="toggleMenu();"><i class="fa-solid fa-map-location-dot" style="color: var(--primary); width: 20px; text-align: center;"></i> موقع المسجد</a>
-                <a href="javascript:void(0)" onclick="showAboutModal(); toggleMenu();"><i class="fa-solid fa-circle-info" style="color: var(--primary); width: 20px; text-align: center;"></i> عن التطبيق</a>
+                <a style="cursor: pointer;" onclick="showAboutModal(); toggleMenu();"><i class="fa-solid fa-circle-info" style="color: var(--primary); width: 20px; text-align: center;"></i> عن التطبيق</a>
             </div>
         </div>
 
@@ -212,7 +242,6 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">سجل الإشعارات</h2>
             </div>
             
-            <!-- سجل الإشعارات نظيف وجاهز للإضافة -->
             <div class="list-card" style="justify-content: center; color: var(--text-light); font-size: 0.95rem; cursor: default;">
                 <i class="fa-regular fa-bell-slash"></i> لا توجد إشعارات جديدة حالياً
             </div>
@@ -292,7 +321,6 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">القسم النسائي</h2>
             </div>
             
-            <!-- مواعيد المصلى -->
             <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; border: 1px solid rgba(15, 90, 62, 0.1); background: linear-gradient(to bottom left, #ffffff, #f0fdf4);">
                 <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
                     <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-door-open"></i></div>
@@ -304,7 +332,6 @@
                 </div>
             </div>
 
-            <!-- حلقات النساء -->
             <div class="list-card" style="cursor: default;">
                 <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-book-quran"></i></div>
                 <div>
@@ -313,7 +340,6 @@
                 </div>
             </div>
 
-            <!-- خصوصية الأسئلة (مربوطة بالشات) -->
             <div style="background: rgba(15, 90, 62, 0.05); border: 1px dashed var(--primary); padding: 15px; border-radius: 15px; font-size: 0.9rem; color: var(--text-main); font-weight: 700; display: flex; align-items: flex-start; gap: 12px; margin-bottom: 15px; cursor: pointer; transition: transform 0.2s;" onclick="openCrispChat()">
                 <i class="fa-solid fa-shield-halved" style="color: var(--primary); font-size: 1.5rem; margin-top: 3px;"></i>
                 <div style="line-height: 1.6;">
@@ -457,7 +483,6 @@
                     <i class="fa-solid fa-paper-plane" style="font-size: 1.2rem;"></i> إرسال المقترح للإدارة
                 </button>
                 
-                <!-- رسالة النجاح المخفية -->
                 <div id="success-msg" style="display: none; color: #0F5A3E; font-weight: 700; font-size: 0.9rem; text-align: center; width: 100%; margin-top: 5px; background: #f0fdf4; padding: 10px; border-radius: 10px;">
                     <i class="fa-solid fa-circle-check"></i> تم إرسال مقترحك بسرية بنجاح. شكراً لك!
                 </div>
@@ -475,7 +500,7 @@
             </div>
             
             <div class="list-card" onclick="openSeries('jumuah')">
-                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-archway"></i></div>
                 <div style="flex-grow: 1;">
                     <h3 style="font-weight: 700; margin:0;">خطب الجمعة</h3>
                     <p style="font-size: 0.85rem; color: gray; margin:0;">تسجيلات منبر المسجد</p>
@@ -531,7 +556,12 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">خطب الجمعة</h2>
             </div>
             
-            <!-- عنصر في قائمة الخطب -->
+            <!-- شريط البحث لخطب الجمعة -->
+            <div style="margin-bottom: 20px; position: relative;">
+                <i class="fa-solid fa-search" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-light);"></i>
+                <input type="text" id="jumuah-search-input" onkeyup="filterJumuahSermons()" placeholder="ابحث عن خطبة..." style="width: 100%; padding: 12px 40px 12px 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); font-family: 'Cairo', sans-serif; outline: none; font-size: 0.95rem; background: var(--bg-color); color: var(--text-main);">
+            </div>
+            
             <div class="list-card" onclick="openSermonDetails('sermon-1')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
                 <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-microphone-lines"></i></div>
                 <div style="flex-grow: 1;">
@@ -540,8 +570,6 @@
                 </div>
                 <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
-            
-            <!-- يمكنك إضافة المزيد من الخطب هنا بتكرار الكود السابق -->
         </div>
 
         <!-- شاشة عرض تفاصيل الخطبة والتعليقات -->
@@ -554,9 +582,7 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main); font-size: 1.05rem;">تفاصيل الخطبة</h2>
             </div>
             
-            <!-- قسم الفيديو -->
             <div style="background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
-                <!-- مشغل اليوتيوب المدمج -->
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/zfWGpC8emv4" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
@@ -573,14 +599,12 @@
                 </div>
             </div>
 
-            <!-- قسم التعليقات -->
             <div style="background: var(--surface); border-radius: 15px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
                 <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 10px; display: flex; align-items: center; gap: 8px;">
                     <i class="fa-regular fa-comments"></i> التعليقات والفوائد
                 </h3>
                 
                 <div id="comments-list" style="max-height: 250px; overflow-y: auto; margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; padding-right: 5px;">
-                    <!-- سيتم تحميل التعليقات هنا بواسطة الجافاسكريبت -->
                 </div>
 
                 <div style="display: flex; gap: 10px;">
@@ -613,17 +637,29 @@
                 </div>
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">خطب ذي الحجة</h2>
             </div>
-            <div class="list-card">
-                <i class="fa-solid fa-play" style="color: var(--primary); font-size: 1.2rem;"></i>
-                <span style="font-weight: 700; font-size: 0.95rem;">الحج رحلة إيمانية</span>
+            
+            <div class="list-card" onclick="openAudioPlayer('hajj', 'الحج رحلة إيمانية', 'https://e.top4top.io/m_38156jtb51.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">الحج رحلة إيمانية</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
-            <div class="list-card">
-                <i class="fa-solid fa-play" style="color: var(--primary); font-size: 1.2rem;"></i>
-                <span style="font-weight: 700; font-size: 0.95rem;">الحج وفضائله</span>
+
+            <div class="list-card" onclick="openAudioPlayer('hajj', 'فضائل الحج', 'https://i.top4top.io/m_3815f49o71.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">فضائل الحج</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
-            <div class="list-card">
-                <i class="fa-solid fa-play" style="color: var(--primary); font-size: 1.2rem;"></i>
-                <span style="font-weight: 700; font-size: 0.95rem;">حجة الوداع</span>
+
+            <div class="list-card" onclick="openAudioPlayer('hajj', 'الاستعداد للعشر الأوائل من ذي الحجة', 'https://h.top4top.io/m_3815by2gt1.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">الاستعداد للعشر الأوائل من ذي الحجة</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
         </div>
 
@@ -681,7 +717,6 @@
                 <h2 class="section-title" style="margin: 0; color: var(--text-main);">الحلقات والدورة الصيفية</h2>
             </div>
 
-            <!-- تنبيهات الطلاب وأولياء الأمور -->
             <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; background: #f0fdf4; border: 1px solid #bbf7d0;">
                 <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
                     <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-seedling"></i></div>
@@ -695,7 +730,6 @@
                 </ul>
             </div>
 
-            <!-- مواعيد الدورة الصيفية -->
             <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default; border: 1px solid rgba(15, 90, 62, 0.1);">
                 <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
                     <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-calendar-check"></i></div>
@@ -708,7 +742,6 @@
                 </div>
             </div>
 
-            <!-- إشعار التحديثات -->
             <div style="background: rgba(212, 175, 55, 0.1); border: 1px dashed var(--secondary); padding: 12px 15px; border-radius: 12px; font-size: 0.85rem; color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                 <i class="fa-solid fa-bell" style="color: var(--secondary); font-size: 1.3rem;"></i>
                 <span style="line-height: 1.5;">أي تغيير للمواعيد أو إلغاء سيكون هنا في التطبيق.</span>
@@ -751,15 +784,7 @@
             <div class="list-card" onclick="openQuranSeries('recitations-ahmed')">
                 <div class="list-icon"><i class="fa-solid fa-microphone"></i></div>
                 <div style="flex-grow: 1;">
-                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem;">تلاوات الشيخ أحمد عبد الراضي</h3>
-                </div>
-                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
-            </div>
-
-            <div class="list-card" onclick="openQuranSeries('recitations-farhat')">
-                <div class="list-icon"><i class="fa-solid fa-microphone"></i></div>
-                <div style="flex-grow: 1;">
-                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem;">تلاوات الشيخ فرحات</h3>
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem;">تلاوات الشيخ أحمد عبد الراضي (إمام المسجد)</h3>
                 </div>
                 <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
@@ -790,46 +815,11 @@
                     <i class="fa-solid fa-arrow-right"></i>
                     <span style="font-size: 0.9rem;">رجوع</span>
                 </div>
-                <h2 class="section-title" style="margin: 0; color: var(--text-main);">تلاوات أحمد عبد الراضي</h2>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">تلاوات الشيخ أحمد عبد الراضي (إمام المسجد)</h2>
             </div>
             
             <div class="list-card" style="justify-content: center; color: var(--text-light); font-size: 0.95rem; cursor: default;">
                 <i class="fa-regular fa-clock"></i> سيتم إضافة التلاوات قريباً...
-            </div>
-        </div>
-
-        <div id="view-quran-series-recitations-farhat" class="hidden-view quran-series-view" style="padding: 20px;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToQuranSection('tilawat')">
-                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
-                    <i class="fa-solid fa-arrow-right"></i>
-                    <span style="font-size: 0.9rem;">رجوع</span>
-                </div>
-                <h2 class="section-title" style="margin: 0; color: var(--text-main);">تلاوات الشيخ فرحات</h2>
-            </div>
-            
-            <!-- قائمة السور (الشيخ فرحات) -->
-            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة هود', 'https://a.top4top.io/m_3802sxyma1.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
-                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
-                <div style="flex-grow: 1;">
-                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة هود</h3>
-                </div>
-                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
-            </div>
-
-            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة ص', 'https://b.top4top.io/m_38024s75z2.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
-                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
-                <div style="flex-grow: 1;">
-                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة ص</h3>
-                </div>
-                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
-            </div>
-
-            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة الزمر (الآية 1 إلى 31)', 'https://a.top4top.io/m_380221f421.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
-                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
-                <div style="flex-grow: 1;">
-                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة الزمر (الآية 1 إلى 31)</h3>
-                </div>
-                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
         </div>
 
@@ -853,7 +843,7 @@
                     <i class="fa-solid fa-arrow-right"></i>
                     <span style="font-size: 0.9rem;">رجوع</span>
                 </div>
-                <h2 class="section-title" style="margin: 0; color: var(--text-main);">الاستماع للتلاوة</h2>
+                <h2 id="audio-view-header" class="section-title" style="margin: 0; color: var(--text-main);">الاستماع للتلاوة</h2>
             </div>
             
             <div style="background: var(--surface); border-radius: 15px; padding: 30px 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
@@ -868,7 +858,6 @@
                     متصفحك لا يدعم مشغل الصوت.
                 </audio>
 
-                <!-- زر التحميل الإجباري -->
                 <a id="audio-download-btn" href="#" onclick="forceDownloadAudio(event)" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--primary); color: white; padding: 12px 20px; border-radius: 12px; text-decoration: none; font-weight: 700; margin-top: 20px; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(15, 90, 62, 0.2); transition: transform 0.2s;">
                     <i class="fa-solid fa-download"></i> تحميل التلاوة
                 </a>
@@ -925,7 +914,6 @@
                 </label>
             </div>
 
-            <!-- اختيار محافظة الصلاة -->
             <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default;">
                 <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
                     <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-location-dot"></i></div>
@@ -984,7 +972,6 @@
         </nav>
     </div>
 
-    <!-- كود Crisp Chat المخفي (الخاص بأسأل الإمام) -->
     <script type="text/javascript">
         window.$crisp=[];
         window.CRISP_WEBSITE_ID="ab8f9bb0-fb59-4a53-a863-897b64b0dbb5";
@@ -994,12 +981,10 @@
             s.async=1;d.getElementsByTagName("head")[0].appendChild(s);
         })();
 
-        // إخفاء الشات فور تحميله
         $crisp.push(["on", "session:loaded", function() {
             $crisp.push(["do", "chat:hide"]);
         }]);
 
-        // إخفاء الشات عندما يقوم المستخدم بإغلاقه
         $crisp.push(["on", "chat:closed", function() {
             $crisp.push(["do", "chat:hide"]);
         }]);
@@ -1008,18 +993,16 @@
             $crisp.push(["do", "chat:show"]);
             $crisp.push(["do", "chat:open"]);
             
-            // رسالة ترحيبية تلقائية تظهر عند فتح الشات لأول مرة
             if (!window.crispWelcomeShown) {
                 setTimeout(function() {
                     $crisp.push(["do", "message:show", ["text", "السلام عليكم ورحمة الله وبركاته 🕌\nمرحباً بك في خدمة (اسأل الإمام).\n\nتفضل بكتابة سؤالك أو استفسارك هنا، وسيقوم الإمام بالرد عليك في أقرب وقت إن شاء الله.\n\n(نحيطكم علماً بأن جميع المحادثات تتم بسرية تامة)."]]);
-                }, 1000); // تأخير ثانية واحدة لتبدو واقعية
+                }, 1000);
                 window.crispWelcomeShown = true;
             }
         }
     </script>
 
     <script>
-        // إظهار وإخفاء نافذة (عن التطبيق)
         function showAboutModal() {
             const modal = document.getElementById('about-modal');
             modal.style.display = 'flex';
@@ -1031,29 +1014,24 @@
             setTimeout(() => { modal.style.display = 'none'; }, 300);
         }
 
-        // --- نظام فتح الشاشات المخفية فوق الرئيسية ---
         function openNotifications() {
             hideAllMainViews();
             document.getElementById('view-notifications').classList.remove('hidden-view');
-            // إخفاء العداد الأحمر عند قراءة الإشعارات
             document.getElementById('notif-badge').style.display = 'none';
-            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
+            window.scrollTo(0, 0); 
         }
 
-        // دالة فتح صندوق المقترحات
         function openSuggestions() {
             hideAllMainViews();
             document.getElementById('view-suggestions').classList.remove('hidden-view');
-            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
+            window.scrollTo(0, 0); 
         }
 
-        // دالة الرجوع من أي شاشة فرعية إلى الرئيسية
         function goBackToHome(currentViewId) {
             document.getElementById(currentViewId).classList.add('hidden-view');
             switchTab('home');
         }
 
-        // دالة نسخ النصوص للحافظة (لأرقام التبرعات)
         function copyToClipboard(elementId) {
             var text = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(text).then(function() {
@@ -1069,7 +1047,6 @@
             });
         }
 
-        // إرسال المقترح في الخلفية بسرية تامة (إلى الإيميل)
         async function sendSuggestionAnonymous() {
             const text = document.getElementById('suggestion-text').value;
             const btn = document.getElementById('send-btn');
@@ -1080,12 +1057,10 @@
                 return;
             }
             
-            // تغيير شكل الزر أثناء الإرسال
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الإرسال...';
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
-            /* مفتاح الوصول (Access Key) الخاص بك */
             const accessKey = "1f305b01-4ace-44bb-b98d-38a00e795fa5"; 
 
             try {
@@ -1100,12 +1075,10 @@
                 });
 
                 if (response.ok) {
-                    // نجاح الإرسال
                     document.getElementById('suggestion-text').value = '';
                     btn.style.display = 'none';
                     successMsg.style.display = 'block';
                     
-                    // إعادة الزر لشكله الطبيعي بعد 4 ثواني
                     setTimeout(() => {
                         btn.style.display = 'flex';
                         btn.innerHTML = '<i class="fa-solid fa-paper-plane" style="font-size: 1.2rem;"></i> إرسال مقترح آخر';
@@ -1125,11 +1098,15 @@
         }
 
         function hideAllMainViews() {
-            // إيقاف الصوت لو شغال
             const player = document.getElementById('main-audio-player');
             if(player) player.pause();
+
+            const iframes = document.querySelectorAll('.video-container iframe');
+            iframes.forEach(iframe => {
+                let iframeSrc = iframe.src;
+                iframe.src = iframeSrc; 
+            });
             
-            // الشاشات الرئيسية
             const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes'];
             mainViews.forEach(v => { const el = document.getElementById(v); if(el) el.classList.add('hidden-view'); });
             
@@ -1137,11 +1114,9 @@
             document.querySelectorAll('.quran-series-view').forEach(v => v.classList.add('hidden-view'));
             document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
             
-            // إخفاء شاشة تفاصيل الخطبة
             const sermonDetails = document.getElementById('view-sermon-details');
             if(sermonDetails) sermonDetails.classList.add('hidden-view');
             
-            // إخفاء شاشة مشغل الصوت
             const audioPlayerView = document.getElementById('view-audio-player');
             if(audioPlayerView) audioPlayerView.classList.add('hidden-view');
             
@@ -1151,11 +1126,10 @@
             });
         }
 
-        // التبديل بين الشاشات الرئيسية
         function switchTab(tabName) {
             hideAllMainViews();
             document.getElementById('view-' + tabName).classList.remove('hidden-view');
-            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
+            window.scrollTo(0, 0);
             
             if(tabName === 'home') document.getElementById('nav-home').classList.add('active');
             if(tabName === 'activities') document.getElementById('nav-activities').classList.add('active');
@@ -1163,21 +1137,18 @@
             if(tabName === 'library') document.getElementById('nav-library').classList.add('active');
         }
 
-        // --- نظام السلاسل (القوائم المنسدلة) ---
         function openSeries(seriesId) {
             document.getElementById('view-lessons').classList.add('hidden-view');
             document.getElementById('view-series-' + seriesId).classList.remove('hidden-view');
-            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
+            window.scrollTo(0, 0); 
         }
         function goBackToLessons() {
             document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
-            // التأكد من إخفاء شاشة تفاصيل الخطبة عند الرجوع
             document.getElementById('view-sermon-details').classList.add('hidden-view');
             document.getElementById('view-lessons').classList.remove('hidden-view');
             window.scrollTo(0, 0);
         }
 
-        // --- نظام فتح تفاصيل خطبة معينة ---
         let currentSermonId = 'sermon-1';
 
         function openSermonDetails(sermonId) {
@@ -1189,12 +1160,37 @@
         }
 
         function goBackToJumuahList() {
+            const iframe = document.querySelector('#view-sermon-details iframe');
+            if(iframe) {
+                let iframeSrc = iframe.src;
+                iframe.src = iframeSrc; 
+            }
+
             document.getElementById('view-sermon-details').classList.add('hidden-view');
             document.getElementById('view-series-jumuah').classList.remove('hidden-view');
             window.scrollTo(0, 0);
         }
 
-        // --- نظام التعليقات المحلي ---
+        // دالة الفلترة لخطب الجمعة
+        function filterJumuahSermons() {
+            let input = document.getElementById('jumuah-search-input');
+            let filter = input.value.toLowerCase();
+            let view = document.getElementById('view-series-jumuah');
+            let cards = view.querySelectorAll('.list-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let h3 = cards[i].querySelector('h3');
+                if (h3) {
+                    let textValue = h3.textContent || h3.innerText;
+                    if (textValue.toLowerCase().indexOf(filter) > -1) {
+                        cards[i].style.display = "flex";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }       
+            }
+        }
+
         function loadComments(sermonId) {
             const commentsList = document.getElementById('comments-list');
             const comments = JSON.parse(localStorage.getItem('comments_' + sermonId)) || [];
@@ -1213,7 +1209,6 @@
                 </div>
             `).join('');
             
-            // النزول لأسفل القائمة لرؤية أحدث تعليق
             commentsList.scrollTop = commentsList.scrollHeight;
         }
 
@@ -1223,7 +1218,6 @@
             if (!text) return;
             
             const comments = JSON.parse(localStorage.getItem('comments_' + currentSermonId)) || [];
-            // إضافة التعليق الجديد
             comments.push({ name: 'مُصلي', text: text });
             localStorage.setItem('comments_' + currentSermonId, JSON.stringify(comments));
             
@@ -1231,7 +1225,6 @@
             loadComments(currentSermonId);
         }
 
-        // --- نظام التصفح المتعدد لأقسام القرآن ---
         function openQuranSection(sectionId) {
             document.getElementById('view-quran').classList.add('hidden-view');
             document.getElementById('view-quran-section-' + sectionId).classList.remove('hidden-view');
@@ -1253,7 +1246,6 @@
             window.scrollTo(0, 0);
         }
 
-        // --- نظام تشغيل وتحميل الصوتيات ---
         let currentAudioSheikh = '';
         let currentAudioUrl = '';
         let currentAudioTitle = '';
@@ -1263,54 +1255,54 @@
             currentAudioUrl = url;
             currentAudioTitle = title;
             
-            // تحديث البيانات
             document.getElementById('audio-player-title').innerText = title;
             const player = document.getElementById('main-audio-player');
             const source = document.getElementById('main-audio-source');
             const downloadBtn = document.getElementById('audio-download-btn');
+            const viewHeader = document.getElementById('audio-view-header');
+            
+            if (viewHeader) {
+                if (sheikh === 'hajj') {
+                    viewHeader.innerText = 'الاستماع للخطبة';
+                } else {
+                    viewHeader.innerText = 'الاستماع للتلاوة';
+                }
+            }
             
             source.src = url;
             if (downloadBtn) {
-                downloadBtn.href = url; // تحديث رابط زر التحميل
+                downloadBtn.href = url;
             }
 
-            player.load(); // تحميل الصوت الجديد
+            player.load(); 
             
-            // تم إيقاف التشغيل التلقائي ليقوم المستخدم بالتشغيل يدوياً
-            // player.play(); 
-            
-            // التنقل
             document.querySelectorAll('.quran-series-view').forEach(v => v.classList.add('hidden-view'));
+            document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
             document.getElementById('view-audio-player').classList.remove('hidden-view');
             window.scrollTo(0, 0);
         }
 
-        // دالة التحميل الإجباري للملفات
         async function forceDownloadAudio(e) {
             e.preventDefault();
             const btn = document.getElementById('audio-download-btn');
             const originalHTML = '<i class="fa-solid fa-download"></i> تحميل التلاوة';
             
             try {
-                // تغيير شكل الزرار
                 btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري التحميل...';
                 btn.style.opacity = '0.7';
                 btn.style.pointerEvents = 'none';
                 
-                // جلب الملف كـ Blob
                 const response = await fetch(currentAudioUrl);
                 if (!response.ok) throw new Error("Network error");
                 const blob = await response.blob();
                 const blobUrl = URL.createObjectURL(blob);
                 
-                // إنشاء رابط مؤقت للتحميل
                 const link = document.createElement('a');
                 link.href = blobUrl;
                 
-                // تحديد امتداد الملف
                 let ext = currentAudioUrl.split('.').pop() || 'm4a';
                 if(ext.includes('?')) ext = ext.split('?')[0];
-                if(ext.length > 4) ext = 'm4a'; // تأمين الامتداد
+                if(ext.length > 4) ext = 'm4a'; 
                 
                 link.download = currentAudioTitle + '.' + ext;
                 
@@ -1321,7 +1313,6 @@
                 
                 btn.innerHTML = '<i class="fa-solid fa-check"></i> بدأ التنزيل بنجاح';
             } catch (error) {
-                // حل بديل (Fallback) لو السيرفر مانع التحميل المباشر بسبب الـ CORS
                 const link = document.createElement('a');
                 link.href = currentAudioUrl;
                 link.download = currentAudioTitle;
@@ -1333,7 +1324,6 @@
                 btn.innerHTML = originalHTML;
             }
             
-            // إرجاع الزرار لأصله بعد 3 ثواني
             setTimeout(() => { 
                 btn.innerHTML = originalHTML; 
                 btn.style.opacity = '1';
@@ -1342,24 +1332,21 @@
         }
         
         function goBackFromAudioPlayer() {
-            // إيقاف الصوت عند الرجوع
             const player = document.getElementById('main-audio-player');
             player.pause();
             
             document.getElementById('view-audio-player').classList.add('hidden-view');
             
-            if (currentAudioSheikh === 'farhat') {
-                document.getElementById('view-quran-series-recitations-farhat').classList.remove('hidden-view');
-            } else if (currentAudioSheikh === 'ahmed') {
+            if (currentAudioSheikh === 'ahmed') {
                 document.getElementById('view-quran-series-recitations-ahmed').classList.remove('hidden-view');
+            } else if (currentAudioSheikh === 'hajj') {
+                document.getElementById('view-series-hajj').classList.remove('hidden-view');
             }
             window.scrollTo(0, 0);
         }
 
-        // تفعيل الوضع الليلي
         function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
 
-        // فتح وإغلاق القائمة الجانبية
         function toggleMenu() {
             const menu = document.getElementById('side-menu');
             const overlay = document.getElementById('menu-overlay');
@@ -1376,7 +1363,6 @@
             }
         }
 
-        // --- نظام مواقيت الصلاة (متعدد المدن) ---
         let dynamicPrayerTimes = [];
         let selectedCity = localStorage.getItem('mosqueAppCity') || 'Mersa Matruh';
         
@@ -1473,9 +1459,6 @@
         fetchPrayerTimes();
         setInterval(updatePrayerTimer, 1000);
 
-        // ==========================================
-        // نظام زر الرجوع للهاتف (Hardware Back Button)
-        // ==========================================
         window.history.pushState({ app: 'running' }, '', '');
 
         let backPressCount = 0;
@@ -1489,27 +1472,22 @@
             
             let actionTaken = false;
 
-            // 1. القائمة الجانبية
             if (sideMenu && sideMenu.classList.contains('open')) {
                 toggleMenu();
                 actionTaken = true;
             }
-            // 2. نافذة (عن التطبيق)
             else if (aboutModal && aboutModal.style.display === 'flex') {
                 closeAboutModal();
                 actionTaken = true;
             }
-            // 3. المشغل الصوتي
             else if (audioPlayer && !audioPlayer.classList.contains('hidden-view')) {
                 goBackFromAudioPlayer();
                 actionTaken = true;
             }
-            // 4. تفاصيل الخطبة
             else if (sermonDetails && !sermonDetails.classList.contains('hidden-view')) {
                 goBackToJumuahList();
                 actionTaken = true;
             }
-            // 5. قوائم السلاسل (داخل الدروس)
             else {
                 const seriesViews = document.querySelectorAll('.series-view:not(#view-sermon-details)');
                 for(let v of seriesViews) {
@@ -1521,7 +1499,6 @@
                 }
             }
             
-            // 6. قوائم القرآن الداخلية
             if (!actionTaken) {
                 const quranSeriesViews = document.querySelectorAll('.quran-series-view:not(#view-audio-player)');
                 for(let v of quranSeriesViews) {
@@ -1534,7 +1511,6 @@
                 }
             }
             
-            // 7. أقسام القرآن الرئيسية
             if (!actionTaken) {
                 const quranSectionViews = document.querySelectorAll('.quran-section-view');
                 for(let v of quranSectionViews) {
@@ -1546,7 +1522,6 @@
                 }
             }
             
-            // 8. الصفحات الفرعية من الرئيسية
             if (!actionTaken) {
                 const nonTabViews = ['view-circles', 'view-lessons', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes'];
                 for(let v of nonTabViews) {
@@ -1559,7 +1534,6 @@
                 }
             }
             
-            // 9. التابات السفلية (ما عدا الرئيسية)
             if (!actionTaken) {
                 const otherTabs = ['view-activities', 'view-quran', 'view-library'];
                 for(let v of otherTabs) {
@@ -1572,25 +1546,21 @@
                 }
             }
             
-            // 10. الشاشة الرئيسية (الخروج من التطبيق)
             if (!actionTaken) {
                 if (backPressCount === 0) {
                     backPressCount++;
                     showToast("اضغط مرة أخرى للخروج من التطبيق");
                     
-                    // إعادة دفع الحالة عشان ميقفلش
                     window.history.pushState({ app: 'running' }, '', '');
                     
                     backPressTimer = setTimeout(() => {
                         backPressCount = 0;
                     }, 2000);
                 } else {
-                    // الخروج الفعلي
                     clearTimeout(backPressTimer);
                     window.history.back(); 
                 }
             } else {
-                // لو قمنا بأي أكشن (قفلنا شاشة)، نرجع نحط State تاني عشان نحتفظ بنظام الرجوع
                 window.history.pushState({ app: 'running' }, '', '');
             }
         });
@@ -1618,7 +1588,7 @@
             toast.innerText = message;
             toast.style.display = 'block';
             
-            void toast.offsetWidth; // Trigger reflow
+            void toast.offsetWidth; 
             toast.style.opacity = '1';
             
             setTimeout(() => {
