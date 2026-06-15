@@ -191,6 +191,7 @@
                 <a style="cursor: pointer;" onclick="switchTab('activities'); toggleMenu();"><i class="fa-solid fa-chalkboard-user" style="color: var(--primary); width: 20px; text-align: center;"></i> الأنشطة</a>
                 <a style="cursor: pointer;" onclick="switchTab('quran'); toggleMenu();"><i class="fa-solid fa-headphones" style="color: var(--primary); width: 20px; text-align: center;"></i> القرآن والتلاوات</a>
                 <a style="cursor: pointer;" onclick="switchTab('library'); toggleMenu();"><i class="fa-solid fa-book-bookmark" style="color: var(--primary); width: 20px; text-align: center;"></i> الأذكار والمكتبة</a>
+                <a style="cursor: pointer;" onclick="switchTab('feed'); toggleMenu();"><i class="fa-solid fa-newspaper" style="color: var(--primary); width: 20px; text-align: center;"></i> الموجز والأخبار</a>
                 <hr style="border: 0; height: 5px; background: var(--bg-color); margin: 0;">
                 <a style="cursor: pointer;" onclick="switchTab('settings'); toggleMenu();"><i class="fa-solid fa-gear" style="color: var(--primary); width: 20px; text-align: center;"></i> إعدادات التطبيق</a>
                 <a href="https://maps.app.goo.gl/5dwPQGzrVk8uPBN2A" target="_blank" onclick="toggleMenu();"><i class="fa-solid fa-map-location-dot" style="color: var(--primary); width: 20px; text-align: center;"></i> موقع المسجد</a>
@@ -224,6 +225,10 @@
                         <i class="fa-solid fa-location-dot"></i> حي الشروق، مرسى مطروح
                     </a>
                 </div>
+                <!-- أيقونة الأخبار والموجز الجديدة -->
+                <button onclick="switchTab('feed')" style="background: none; border: none; color: white; font-size: 1.4rem; cursor: pointer; padding: 0 10px 0 0; outline: none;">
+                    <i class="fa-solid fa-newspaper"></i>
+                </button>
                 <!-- زر الإشعارات -->
                 <button onclick="openNotifications()" style="background: none; border: none; color: white; font-size: 1.4rem; cursor: pointer; position: relative; padding: 0 15px 0 0;">
                     <i class="fa-solid fa-bell"></i>
@@ -270,6 +275,7 @@
             <!-- شبكة الخدمات -->
             <main class="services-section">
                 <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> خدمات المسجد</h2>
+                
                 <div class="services-grid">
                     <div class="service-item" onclick="switchTab('lessons')">
                         <div class="icon-wrapper"><i class="fa-solid fa-book-open"></i></div>
@@ -485,6 +491,219 @@
                 
                 <div id="success-msg" style="display: none; color: #0F5A3E; font-weight: 700; font-size: 0.9rem; text-align: center; width: 100%; margin-top: 5px; background: #f0fdf4; padding: 10px; border-radius: 10px;">
                     <i class="fa-solid fa-circle-check"></i> تم إرسال مقترحك بسرية بنجاح. شكراً لك!
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة الموجز والأخبار الرئيسية -->
+        <div id="view-feed" class="hidden-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToHome('view-feed')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);"><i class="fa-solid fa-newspaper"></i> الموجز والأخبار</h2>
+            </div>
+
+            <!-- كارت الخبر الجديد (تهنئة لأبنائنا) -->
+            <div style="background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 6px 15px rgba(15, 90, 62, 0.15); border: 2px solid var(--primary); transition: all 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="font-size: 0.8rem; color: var(--text-light); font-weight: 600;"><i class="fa-regular fa-clock"></i> 15 يونيو 2026، 05:56 م</span>
+                </div>
+                <h3 style="font-weight: 800; font-size: 1.1rem; color: var(--text-main); margin: 0 0 5px;">تهنئة لأبنائنا</h3>
+                <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.8; font-weight: 600; margin: 0 0 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                    تهنئة ومباركة لأبنائنا من طلاب الدورة الصيفية للقرآن الكريم بمسجد عباد الوهاب الذين جمعوا بين شرف حفظ كتاب الله وبين التفوق الدراسي والحصول على المراكز الأولى فى دراستهم في مراحل التعليم المختلفة...
+                </p>
+                <span onclick="openPostDetails('2')" style="color: var(--primary); font-weight: 800; font-size: 0.9rem; cursor: pointer; display: inline-block; margin-bottom: 15px;">قراءة المزيد...</span>
+                
+                <div style="width: 100%;">
+                    <img src="https://i.postimg.cc/L6McP894/5873145964153998883.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; height: 200px; border-radius: 8px; object-fit: cover; cursor: pointer;">
+                </div>
+            </div>
+
+            <!-- كارت الخبر القديم (الدورة الصيفية) -->
+            <div style="background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 6px 15px rgba(15, 90, 62, 0.15); border: 2px solid var(--primary); transition: all 0.3s ease;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="font-size: 0.8rem; color: var(--text-light); font-weight: 600;"><i class="fa-regular fa-clock"></i> 15 يونيو 2026، 04:55 م</span>
+                </div>
+                <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.8; font-weight: 700; margin: 0 0 15px;">
+                    صور لابناءنا من حفظة القرآن في بداية الدورة الصيفية للمسجد
+                </p>
+                
+                <!-- شبكة عرض الصور المصغرة -->
+                <div id="news-grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <!-- الصورة الأولى -->
+                    <img src="https://i.postimg.cc/3w0S6XLL/5870469366304935288.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; height: 160px; border-radius: 8px; object-fit: cover; grid-column: span 2; cursor: pointer;">
+                    
+                    <!-- الصورة الثانية -->
+                    <img src="https://i.postimg.cc/q76bYsmj/5870469366304935287.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; height: 120px; border-radius: 8px; object-fit: cover; cursor: pointer;">
+                    
+                    <!-- الصورة الثالثة (تحتوي على الغطاء اللوني الشفاف +2) -->
+                    <div id="img3-wrapper" style="position: relative; width: 100%; height: 120px; cursor: pointer;" onclick="openPostDetails('1')">
+                        <img src="https://i.postimg.cc/Pqv3cW6K/5870469366304935286.jpg" alt="" style="width: 100%; height: 100%; border-radius: 8px; object-fit: cover;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; font-weight: 900;">
+                            +2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة تفاصيل المنشور (Post 1 - الدورة الصيفية) -->
+        <div id="view-post-details-1" class="hidden-view post-details-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToFeed()">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">تفاصيل المنشور</h2>
+            </div>
+
+            <!-- عرض المنشور والصور بشكل طولي متكامل -->
+            <div style="background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 6px 15px rgba(15, 90, 62, 0.15); border: 2px solid var(--primary);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="font-size: 0.8rem; color: var(--text-light); font-weight: 600;"><i class="fa-regular fa-clock"></i> 15 يونيو 2026، 04:55 م</span>
+                </div>
+                <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.8; font-weight: 700; margin: 0 0 15px;">
+                    صور لابناءنا من حفظة القرآن في بداية الدورة الصيفية للمسجد
+                </p>
+                
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <img src="https://i.postimg.cc/3w0S6XLL/5870469366304935288.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; border-radius: 8px; object-fit: cover; cursor: pointer;">
+                    <img src="https://i.postimg.cc/q76bYsmj/5870469366304935287.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; border-radius: 8px; object-fit: cover; cursor: pointer;">
+                    <img src="https://i.postimg.cc/Pqv3cW6K/5870469366304935286.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; border-radius: 8px; object-fit: cover; cursor: pointer;">
+                    <img src="https://i.postimg.cc/tgnSf3rB/5870469366304935284.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; border-radius: 8px; object-fit: cover; cursor: pointer;">
+                    <img src="5870469366304935285.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; border-radius: 8px; object-fit: cover; cursor: pointer;">
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة تفاصيل المنشور (Post 2 - التهنئة) -->
+        <div id="view-post-details-2" class="hidden-view post-details-view" style="padding: 20px;">
+            <!-- Header -->
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToFeed()">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">تفاصيل المنشور</h2>
+            </div>
+
+            <div style="background: var(--surface); border-radius: 15px; padding: 15px; margin-bottom: 15px; box-shadow: 0 6px 15px rgba(15, 90, 62, 0.15); border: 2px solid var(--primary);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="font-size: 0.8rem; color: var(--text-light); font-weight: 600;"><i class="fa-regular fa-clock"></i> 15 يونيو 2026، 05:56 م</span>
+                </div>
+                
+                <h3 style="font-weight: 800; font-size: 1.1rem; color: var(--text-main); margin: 0 0 10px;">تهنئة لأبنائنا</h3>
+                
+                <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.8; font-weight: 600; margin: 0 0 15px;">
+                    تهنئة ومباركة لأبنائنا من طلاب الدورة الصيفية للقرآن الكريم بمسجد عباد الوهاب الذين جمعوا بين شرف حفظ كتاب الله وبين التفوق الدراسي والحصول على المراكز الأولى فى دراستهم في مراحل التعليم المختلفة، فكانوا نجوما تضيء فى سماء العلم والقرآن، وقدموا رسالة واضحة أن القرآن طريق النجاح في الدنيا والآخرة:
+                </p>
+
+                <h4 style="color: var(--secondary); font-weight: 800; margin-top: 15px; margin-bottom: 5px; font-size: 1.05rem;">#اولا_التعليم_الأزهري:</h4>
+                
+                <h5 style="color: var(--primary); font-weight: 800; margin-top: 10px; margin-bottom: 5px; background: rgba(15, 90, 62, 0.05); padding: 5px; border-radius: 5px; display: inline-block;">#الصف_الاول_الثانوي_الأزهرى:</h5>
+                <div style="padding-right: 10px; border-right: 2px solid var(--secondary); margin-bottom: 10px;">
+                    <strong style="color: var(--primary);">#العلمى:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 10px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الثانى: أحمد أيوب</li>
+                        <li>الرابع: عمر حماده</li>
+                        <li>السادس: أحمد إسماعيل</li>
+                    </ul>
+                    <strong style="color: var(--primary);">#الأدبى:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 5px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>السادس: حمزة حماده إسلام</li>
+                    </ul>
+                </div>
+                
+                <h5 style="color: var(--primary); font-weight: 800; margin-top: 10px; margin-bottom: 5px; background: rgba(15, 90, 62, 0.05); padding: 5px; border-radius: 5px; display: inline-block;">#الصف_الاول_الاعدادى_الأزهرى:</h5>
+                <div style="padding-right: 10px; border-right: 2px solid var(--secondary); margin-bottom: 10px;">
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 5px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الأول: محمود محمد الكفراوي</li>
+                        <li>الثانى: محمد رضا نوح</li>
+                        <li>الخامس: معاذ محمد أحمد</li>
+                        <li>السادس: يوسف مصطفى اليمانى</li>
+                    </ul>
+                </div>
+
+                <h5 style="color: var(--primary); font-weight: 800; margin-top: 10px; margin-bottom: 5px; background: rgba(15, 90, 62, 0.05); padding: 5px; border-radius: 5px; display: inline-block;">#الصف_الثانى_الاعدادى_الأزهرى:</h5>
+                <div style="padding-right: 10px; border-right: 2px solid var(--secondary); margin-bottom: 10px;">
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 5px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الاول: يوسف بهاء الدين</li>
+                        <li>السادس: محمود أيوب</li>
+                    </ul>
+                </div>
+
+                <h5 style="color: var(--primary); font-weight: 800; margin-top: 10px; margin-bottom: 5px; background: rgba(15, 90, 62, 0.05); padding: 5px; border-radius: 5px; display: inline-block;">#الصف_الخامس_الابتدائي_الأزهرى:</h5>
+                <div style="padding-right: 10px; border-right: 2px solid var(--secondary); margin-bottom: 15px;">
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 5px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الأول: أسامه بهاء الدين</li>
+                        <li>العاشر: عمر محمد بسيونى</li>
+                    </ul>
+                </div>
+
+                <h4 style="color: var(--secondary); font-weight: 800; margin-top: 20px; margin-bottom: 5px; font-size: 1.05rem;">#ثانيا_التعليم_العام:</h4>
+                
+                <h5 style="color: var(--primary); font-weight: 800; margin-top: 10px; margin-bottom: 5px; background: rgba(15, 90, 62, 0.05); padding: 5px; border-radius: 5px; display: inline-block;">#المرحلة_الثانوية:</h5>
+                <div style="padding-right: 10px; border-right: 2px solid var(--secondary); margin-bottom: 10px;">
+                    <strong style="color: var(--primary);">#الصف_الثاني_الثانوي:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 5px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الرابع: معاذ محمود عزت</li>
+                        <li>الخامس: أمير شعبان</li>
+                        <li>الثامن: أحمد شوقى</li>
+                    </ul>
+                </div>
+
+                <h5 style="color: var(--primary); font-weight: 800; margin-top: 10px; margin-bottom: 5px; background: rgba(15, 90, 62, 0.05); padding: 5px; border-radius: 5px; display: inline-block;">#المرحلة_الاعدادية:</h5>
+                <div style="padding-right: 10px; border-right: 2px solid var(--secondary); margin-bottom: 10px;">
+                    <strong style="color: var(--primary);">#الصف_الاول_الاعدادى_طارق_مباشر:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 10px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الخامس: مصطفى نبيل</li>
+                        <li>الثامن: إسلام أحمد</li>
+                    </ul>
+                    <strong style="color: var(--primary);">#الصف_الثاني_الاعدادى_طارق_مباشر:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 10px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الثانى: يحيى زكريا</li>
+                        <li>الخامس: عبدالرحمن سيد</li>
+                        <li>السادس: يوسف محمود سعد</li>
+                        <li>التاسع: يوسف محمد النجار</li>
+                    </ul>
+                    <strong style="color: var(--primary);">#الصف_الاول_الاعدادى_ابن_سينا:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 5px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الاول: ياسين ياسر</li>
+                    </ul>
+                </div>
+
+                <h5 style="color: var(--primary); font-weight: 800; margin-top: 10px; margin-bottom: 5px; background: rgba(15, 90, 62, 0.05); padding: 5px; border-radius: 5px; display: inline-block;">#المرحلة_الابتدائية:</h5>
+                <div style="padding-right: 10px; border-right: 2px solid var(--secondary); margin-bottom: 10px;">
+                    <strong style="color: var(--primary);">#الصف_السادس_الابتدائي_العبور:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 10px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الأول: مصطفى حسن جابر</li>
+                        <li>الثالث: عبدالله عزت</li>
+                    </ul>
+                    <strong style="color: var(--primary);">#الصف_السادس_السادات:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 10px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الاول: محمد ربيع</li>
+                        <li>الثانية: رودينا أحمد عبدالعزيز</li>
+                        <li>الثامن: معتصم محمد صلاح</li>
+                    </ul>
+                    <strong style="color: var(--primary);">#الصف_الخامس_العبور:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 10px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الأولى: ألين محمد عبدالله</li>
+                        <li>الثالث: عمر محمود سعد</li>
+                    </ul>
+                    <strong style="color: var(--primary);">#الصف_الثالث_العبور:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 10px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>الرابع: معاذ محمد حطاوي</li>
+                    </ul>
+                    <strong style="color: var(--primary);">#الصف_الثالث_ابن_سينا:</strong>
+                    <ul style="list-style-type: none; padding: 0; margin: 5px 0 5px 0; font-size: 0.9rem; line-height: 1.6; font-weight: 700;">
+                        <li>السابع: فارس فؤاد النجار</li>
+                    </ul>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                    <img src="https://i.postimg.cc/L6McP894/5873145964153998883.jpg" alt="" onclick="openLightbox(this.src)" style="width: 100%; border-radius: 8px; object-fit: cover; cursor: pointer;">
                 </div>
             </div>
         </div>
@@ -788,6 +1007,14 @@
                 </div>
                 <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
+
+            <div class="list-card" onclick="openQuranSeries('recitations-farhat')">
+                <div class="list-icon"><i class="fa-solid fa-microphone"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem;">تلاوات الشيخ فرحات</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
+            </div>
         </div>
 
         <div id="view-quran-section-sciences" class="hidden-view quran-section-view" style="padding: 20px;">
@@ -815,11 +1042,46 @@
                     <i class="fa-solid fa-arrow-right"></i>
                     <span style="font-size: 0.9rem;">رجوع</span>
                 </div>
-                <h2 class="section-title" style="margin: 0; color: var(--text-main);">تلاوات الشيخ أحمد عبد الراضي (إمام المسجد)</h2>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">تلاوات أحمد عبد الراضي</h2>
             </div>
             
             <div class="list-card" style="justify-content: center; color: var(--text-light); font-size: 0.95rem; cursor: default;">
                 <i class="fa-regular fa-clock"></i> سيتم إضافة التلاوات قريباً...
+            </div>
+        </div>
+
+        <div id="view-quran-series-recitations-farhat" class="hidden-view quran-series-view" style="padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; cursor: pointer; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05);" onclick="goBackToQuranSection('tilawat')">
+                <div style="display: flex; align-items: center; gap: 6px; color: var(--primary); font-weight: 800; background: rgba(15, 90, 62, 0.08); padding: 5px 12px; border-radius: 20px;">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span style="font-size: 0.9rem;">رجوع</span>
+                </div>
+                <h2 class="section-title" style="margin: 0; color: var(--text-main);">تلاوات الشيخ فرحات</h2>
+            </div>
+            
+            <!-- قائمة السور (الشيخ فرحات) -->
+            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة هود', 'https://a.top4top.io/m_3802sxyma1.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة هود</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
+            </div>
+
+            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة ص', 'https://b.top4top.io/m_38024s75z2.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة ص</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
+            </div>
+
+            <div class="list-card" onclick="openAudioPlayer('farhat', 'سورة الزمر (الآية 1 إلى 31)', 'https://a.top4top.io/m_380221f421.m4a')" style="padding: 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background: var(--surface); display: flex; align-items: center; gap: 15px;">
+                <div class="list-icon" style="background: var(--secondary);"><i class="fa-solid fa-microphone-lines"></i></div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem; color: var(--text-main);">سورة الزمر (الآية 1 إلى 31)</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="color: var(--text-light); font-size: 1.1rem;"></i>
             </div>
         </div>
 
@@ -906,7 +1168,7 @@
             <div class="list-card" style="justify-content: space-between; cursor: default;">
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <div class="list-icon" style="background: #334155;"><i class="fa-solid fa-moon"></i></div>
-                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem;">الوضع الليلي</h3>
+                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem;">الوضع الليلي (Dark Mode)</h3>
                 </div>
                 <label class="switch">
                   <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()">
@@ -915,39 +1177,16 @@
             </div>
 
             <div class="list-card" style="flex-direction: column; align-items: flex-start; gap: 10px; cursor: default;">
-                <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
-                    <div class="list-icon" style="background: var(--primary);"><i class="fa-solid fa-location-dot"></i></div>
-                    <h3 style="font-weight: 700; margin:0; font-size: 0.95rem;">موقع مواقيت الصلاة</h3>
-                </div>
-                <select id="city-select" onchange="changeCity()" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.1); font-family: 'Cairo', sans-serif; outline: none; background: var(--bg-color); color: var(--text-main); font-weight: 600;">
-                    <option value="Mersa Matruh">مرسى مطروح (الافتراضي)</option>
-                    <option value="Cairo">القاهرة</option>
-                    <option value="Alexandria">الإسكندرية</option>
-                    <option value="Giza">الجيزة</option>
-                    <option value="Port Said">بورسعيد</option>
-                    <option value="Suez">السويس</option>
-                    <option value="Luxor">الأقصر</option>
-                    <option value="Aswan">أسوان</option>
-                    <option value="Asyut">أسيوط</option>
-                    <option value="Ismailia">الإسماعيلية</option>
-                    <option value="Faiyum">الفيوم</option>
-                    <option value="Minya">المنيا</option>
-                    <option value="Qena">قنا</option>
-                    <option value="Sohag">سوهاج</option>
-                    <option value="Red Sea">البحر الأحمر</option>
-                    <option value="Dakahlia">الدقهلية</option>
-                    <option value="Gharbia">الغربية</option>
-                    <option value="Monufia">المنوفية</option>
-                    <option value="Beheira">البحيرة</option>
-                    <option value="Kafr El Sheikh">كفر الشيخ</option>
-                    <option value="Qalyubia">القليوبية</option>
-                    <option value="Sharqia">الشرقية</option>
-                    <option value="Damietta">دمياط</option>
-                    <option value="Beni Suef">بني سويف</option>
+                <h3 style="font-weight: 700; margin:0; font-size: 0.95rem;"><i class="fa-solid fa-calculator" style="color: var(--primary);"></i> طريقة حساب مواقيت الصلاة</h3>
+                <select style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.1); font-family: 'Cairo', sans-serif; outline: none; background: var(--bg-color); color: var(--text-main);">
+                    <option value="5">الهيئة المصرية العامة للمساحة</option>
+                    <option value="3">رابطة العالم الإسلامي</option>
+                    <option value="4">جامعة أم القرى</option>
                 </select>
             </div>
         </div>
 
+        <!-- قسم المطورين -->
         <div class="credits-section">
             <i class="fa-solid fa-code" style="color: var(--secondary); margin-bottom: 5px;"></i><br>
             إعداد وتطوير التطبيق<br>
@@ -966,12 +1205,20 @@
             <div class="nav-item" id="nav-quran" onclick="switchTab('quran')">
                 <i class="fa-solid fa-headphones"></i><span>القرآن</span>
             </div>
-            <div class="nav-item" id="nav-library" onclick="switchTab('library')">
-                <i class="fa-solid fa-book-bookmark"></i><span>المكتبة</span>
+            <div class="nav-item" id="nav-lessons" onclick="switchTab('lessons')">
+                <i class="fa-solid fa-book-open"></i><span>الدروس</span>
             </div>
         </nav>
+        
+        <!-- Lightbox Modal (لمشاهدة الصور بحجمها الكامل) -->
+        <div id="image-lightbox" onclick="closeLightbox()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: none; align-items: center; justify-content: center; flex-direction: column; cursor: pointer; opacity: 0; transition: opacity 0.3s ease;">
+            <button onclick="closeLightbox()" style="position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2); width: 40px; height: 40px; border-radius: 50%; border: none; color: white; font-size: 1.5rem; cursor: pointer; z-index: 10001; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-xmark"></i></button>
+            <img id="lightbox-img" src="" style="max-width: 95%; max-height: 85%; border-radius: 12px; object-fit: contain; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        </div>
+
     </div>
 
+    <!-- كود Crisp Chat المخفي (الخاص بأسأل الإمام) -->
     <script type="text/javascript">
         window.$crisp=[];
         window.CRISP_WEBSITE_ID="ab8f9bb0-fb59-4a53-a863-897b64b0dbb5";
@@ -981,10 +1228,12 @@
             s.async=1;d.getElementsByTagName("head")[0].appendChild(s);
         })();
 
+        // إخفاء الشات فور تحميله
         $crisp.push(["on", "session:loaded", function() {
             $crisp.push(["do", "chat:hide"]);
         }]);
 
+        // إخفاء الشات عندما يقوم المستخدم بإغلاقه
         $crisp.push(["on", "chat:closed", function() {
             $crisp.push(["do", "chat:hide"]);
         }]);
@@ -993,16 +1242,48 @@
             $crisp.push(["do", "chat:show"]);
             $crisp.push(["do", "chat:open"]);
             
+            // رسالة ترحيبية تلقائية تظهر عند فتح الشات لأول مرة
             if (!window.crispWelcomeShown) {
                 setTimeout(function() {
                     $crisp.push(["do", "message:show", ["text", "السلام عليكم ورحمة الله وبركاته 🕌\nمرحباً بك في خدمة (اسأل الإمام).\n\nتفضل بكتابة سؤالك أو استفسارك هنا، وسيقوم الإمام بالرد عليك في أقرب وقت إن شاء الله.\n\n(نحيطكم علماً بأن جميع المحادثات تتم بسرية تامة)."]]);
-                }, 1000);
+                }, 1000); // تأخير ثانية واحدة لتبدو واقعية
                 window.crispWelcomeShown = true;
             }
         }
     </script>
 
     <script>
+        // --- نظام معرض الصور المصغر (Grid) والـ Lightbox والمنشور ---
+        function openPostDetails(postId) {
+            hideAllMainViews();
+            document.getElementById('view-post-details-' + postId).classList.remove('hidden-view');
+            window.scrollTo(0, 0);
+        }
+
+        function goBackToFeed() {
+            document.querySelectorAll('.post-details-view').forEach(v => v.classList.add('hidden-view'));
+            document.getElementById('view-feed').classList.remove('hidden-view');
+            window.scrollTo(0, 0);
+        }
+
+        function openLightbox(src) {
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            setTimeout(() => { lightbox.style.opacity = '1'; }, 10);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('image-lightbox');
+            lightbox.style.opacity = '0';
+            setTimeout(() => { 
+                lightbox.style.display = 'none'; 
+                document.getElementById('lightbox-img').src = '';
+            }, 300);
+        }
+
+        // إظهار وإخفاء نافذة (عن التطبيق)
         function showAboutModal() {
             const modal = document.getElementById('about-modal');
             modal.style.display = 'flex';
@@ -1014,24 +1295,29 @@
             setTimeout(() => { modal.style.display = 'none'; }, 300);
         }
 
+        // --- نظام فتح الشاشات المخفية فوق الرئيسية ---
         function openNotifications() {
             hideAllMainViews();
             document.getElementById('view-notifications').classList.remove('hidden-view');
+            // إخفاء العداد الأحمر عند قراءة الإشعارات
             document.getElementById('notif-badge').style.display = 'none';
-            window.scrollTo(0, 0); 
+            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
         }
 
+        // دالة فتح صندوق المقترحات
         function openSuggestions() {
             hideAllMainViews();
             document.getElementById('view-suggestions').classList.remove('hidden-view');
-            window.scrollTo(0, 0); 
+            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
         }
 
+        // دالة الرجوع من أي شاشة فرعية إلى الرئيسية
         function goBackToHome(currentViewId) {
             document.getElementById(currentViewId).classList.add('hidden-view');
             switchTab('home');
         }
 
+        // دالة نسخ النصوص للحافظة (لأرقام التبرعات)
         function copyToClipboard(elementId) {
             var text = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(text).then(function() {
@@ -1047,6 +1333,7 @@
             });
         }
 
+        // إرسال المقترح في الخلفية بسرية تامة (إلى الإيميل)
         async function sendSuggestionAnonymous() {
             const text = document.getElementById('suggestion-text').value;
             const btn = document.getElementById('send-btn');
@@ -1057,10 +1344,12 @@
                 return;
             }
             
+            // تغيير شكل الزر أثناء الإرسال
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الإرسال...';
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
+            /* مفتاح الوصول (Access Key) الخاص بك */
             const accessKey = "1f305b01-4ace-44bb-b98d-38a00e795fa5"; 
 
             try {
@@ -1075,10 +1364,12 @@
                 });
 
                 if (response.ok) {
+                    // نجاح الإرسال
                     document.getElementById('suggestion-text').value = '';
                     btn.style.display = 'none';
                     successMsg.style.display = 'block';
                     
+                    // إعادة الزر لشكله الطبيعي بعد 4 ثواني
                     setTimeout(() => {
                         btn.style.display = 'flex';
                         btn.innerHTML = '<i class="fa-solid fa-paper-plane" style="font-size: 1.2rem;"></i> إرسال مقترح آخر';
@@ -1098,57 +1389,67 @@
         }
 
         function hideAllMainViews() {
+            // إيقاف الصوت لو شغال
             const player = document.getElementById('main-audio-player');
             if(player) player.pause();
 
+            // إيقاف تشغيل فيديوهات اليوتيوب عند الخروج من الشاشة
             const iframes = document.querySelectorAll('.video-container iframe');
             iframes.forEach(iframe => {
                 let iframeSrc = iframe.src;
                 iframe.src = iframeSrc; 
             });
             
-            const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes'];
+            // الشاشات الرئيسية مع إضافة واجهة التفاصيل
+            const mainViews = ['view-home', 'view-activities', 'view-circles', 'view-lessons', 'view-library', 'view-quran', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes', 'view-feed'];
             mainViews.forEach(v => { const el = document.getElementById(v); if(el) el.classList.add('hidden-view'); });
             
+            document.querySelectorAll('.post-details-view').forEach(v => v.classList.add('hidden-view'));
             document.querySelectorAll('.quran-section-view').forEach(v => v.classList.add('hidden-view'));
             document.querySelectorAll('.quran-series-view').forEach(v => v.classList.add('hidden-view'));
             document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
             
+            // إخفاء شاشة تفاصيل الخطبة
             const sermonDetails = document.getElementById('view-sermon-details');
             if(sermonDetails) sermonDetails.classList.add('hidden-view');
             
+            // إخفاء شاشة مشغل الصوت
             const audioPlayerView = document.getElementById('view-audio-player');
             if(audioPlayerView) audioPlayerView.classList.add('hidden-view');
             
-            ['nav-home', 'nav-activities', 'nav-quran', 'nav-library'].forEach(id => {
+            ['nav-home', 'nav-activities', 'nav-quran', 'nav-lessons'].forEach(id => {
                 const el = document.getElementById(id);
                 if(el) el.classList.remove('active');
             });
         }
 
+        // التبديل بين الشاشات الرئيسية
         function switchTab(tabName) {
             hideAllMainViews();
             document.getElementById('view-' + tabName).classList.remove('hidden-view');
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
             
             if(tabName === 'home') document.getElementById('nav-home').classList.add('active');
             if(tabName === 'activities') document.getElementById('nav-activities').classList.add('active');
             if(tabName === 'quran') document.getElementById('nav-quran').classList.add('active');
-            if(tabName === 'library') document.getElementById('nav-library').classList.add('active');
+            if(tabName === 'lessons') document.getElementById('nav-lessons').classList.add('active');
         }
 
+        // --- نظام السلاسل (القوائم المنسدلة) ---
         function openSeries(seriesId) {
             document.getElementById('view-lessons').classList.add('hidden-view');
             document.getElementById('view-series-' + seriesId).classList.remove('hidden-view');
-            window.scrollTo(0, 0); 
+            window.scrollTo(0, 0); // الصعود لأعلى الشاشة
         }
         function goBackToLessons() {
             document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
+            // التأكد من إخفاء شاشة تفاصيل الخطبة عند الرجوع
             document.getElementById('view-sermon-details').classList.add('hidden-view');
             document.getElementById('view-lessons').classList.remove('hidden-view');
             window.scrollTo(0, 0);
         }
 
+        // --- نظام فتح تفاصيل خطبة معينة ---
         let currentSermonId = 'sermon-1';
 
         function openSermonDetails(sermonId) {
@@ -1160,6 +1461,7 @@
         }
 
         function goBackToJumuahList() {
+            // إيقاف تشغيل فيديو الخطبة عند الرجوع
             const iframe = document.querySelector('#view-sermon-details iframe');
             if(iframe) {
                 let iframeSrc = iframe.src;
@@ -1191,6 +1493,7 @@
             }
         }
 
+        // --- نظام التعليقات المحلي ---
         function loadComments(sermonId) {
             const commentsList = document.getElementById('comments-list');
             const comments = JSON.parse(localStorage.getItem('comments_' + sermonId)) || [];
@@ -1209,6 +1512,7 @@
                 </div>
             `).join('');
             
+            // النزول لأسفل القائمة لرؤية أحدث تعليق
             commentsList.scrollTop = commentsList.scrollHeight;
         }
 
@@ -1218,6 +1522,7 @@
             if (!text) return;
             
             const comments = JSON.parse(localStorage.getItem('comments_' + currentSermonId)) || [];
+            // إضافة التعليق الجديد
             comments.push({ name: 'مُصلي', text: text });
             localStorage.setItem('comments_' + currentSermonId, JSON.stringify(comments));
             
@@ -1225,6 +1530,7 @@
             loadComments(currentSermonId);
         }
 
+        // --- نظام التصفح المتعدد لأقسام القرآن ---
         function openQuranSection(sectionId) {
             document.getElementById('view-quran').classList.add('hidden-view');
             document.getElementById('view-quran-section-' + sectionId).classList.remove('hidden-view');
@@ -1246,6 +1552,7 @@
             window.scrollTo(0, 0);
         }
 
+        // --- نظام تشغيل وتحميل الصوتيات ---
         let currentAudioSheikh = '';
         let currentAudioUrl = '';
         let currentAudioTitle = '';
@@ -1255,7 +1562,12 @@
             currentAudioUrl = url;
             currentAudioTitle = title;
             
-            document.getElementById('audio-player-title').innerText = title;
+            // تحديث البيانات مع حماية ضد أخطاء (null)
+            const titleElement = document.getElementById('audio-player-title');
+            if (titleElement) {
+                titleElement.innerText = title;
+            }
+            
             const player = document.getElementById('main-audio-player');
             const source = document.getElementById('main-audio-source');
             const downloadBtn = document.getElementById('audio-download-btn');
@@ -1269,40 +1581,56 @@
                 }
             }
             
-            source.src = url;
+            if (source) {
+                source.src = url;
+            }
+            
             if (downloadBtn) {
-                downloadBtn.href = url;
+                downloadBtn.href = url; // تحديث رابط زر التحميل
             }
 
-            player.load(); 
+            if (player) {
+                player.load(); // تحميل الصوت الجديد
+            }
             
+            // التنقل وإخفاء الشاشات
             document.querySelectorAll('.quran-series-view').forEach(v => v.classList.add('hidden-view'));
             document.querySelectorAll('.series-view').forEach(v => v.classList.add('hidden-view'));
-            document.getElementById('view-audio-player').classList.remove('hidden-view');
+            
+            const audioView = document.getElementById('view-audio-player');
+            if (audioView) {
+                audioView.classList.remove('hidden-view');
+            }
+            
             window.scrollTo(0, 0);
         }
 
+        // دالة التحميل الإجباري للملفات
         async function forceDownloadAudio(e) {
             e.preventDefault();
             const btn = document.getElementById('audio-download-btn');
             const originalHTML = '<i class="fa-solid fa-download"></i> تحميل التلاوة';
             
             try {
+                // تغيير شكل الزرار
                 btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري التحميل...';
                 btn.style.opacity = '0.7';
                 btn.style.pointerEvents = 'none';
                 
+                // جلب الملف كـ Blob
                 const response = await fetch(currentAudioUrl);
                 if (!response.ok) throw new Error("Network error");
                 const blob = await response.blob();
                 const blobUrl = URL.createObjectURL(blob);
                 
+                // إنشاء رابط مؤقت للتحميل
                 const link = document.createElement('a');
                 link.href = blobUrl;
                 
+                // تحديد امتداد الملف
                 let ext = currentAudioUrl.split('.').pop() || 'm4a';
                 if(ext.includes('?')) ext = ext.split('?')[0];
-                if(ext.length > 4) ext = 'm4a'; 
+                if(ext.length > 4) ext = 'm4a'; // تأمين الامتداد
                 
                 link.download = currentAudioTitle + '.' + ext;
                 
@@ -1313,6 +1641,7 @@
                 
                 btn.innerHTML = '<i class="fa-solid fa-check"></i> بدأ التنزيل بنجاح';
             } catch (error) {
+                // حل بديل (Fallback) لو السيرفر مانع التحميل المباشر بسبب الـ CORS
                 const link = document.createElement('a');
                 link.href = currentAudioUrl;
                 link.download = currentAudioTitle;
@@ -1324,6 +1653,7 @@
                 btn.innerHTML = originalHTML;
             }
             
+            // إرجاع الزرار لأصله بعد 3 ثواني
             setTimeout(() => { 
                 btn.innerHTML = originalHTML; 
                 btn.style.opacity = '1';
@@ -1332,6 +1662,7 @@
         }
         
         function goBackFromAudioPlayer() {
+            // إيقاف الصوت عند الرجوع
             const player = document.getElementById('main-audio-player');
             player.pause();
             
@@ -1345,8 +1676,10 @@
             window.scrollTo(0, 0);
         }
 
+        // تفعيل الوضع الليلي
         function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
 
+        // فتح وإغلاق القائمة الجانبية
         function toggleMenu() {
             const menu = document.getElementById('side-menu');
             const overlay = document.getElementById('menu-overlay');
@@ -1363,6 +1696,7 @@
             }
         }
 
+        // --- نظام مواقيت الصلاة (متعدد المدن) ---
         let dynamicPrayerTimes = [];
         let selectedCity = localStorage.getItem('mosqueAppCity') || 'Mersa Matruh';
         
@@ -1459,6 +1793,9 @@
         fetchPrayerTimes();
         setInterval(updatePrayerTimer, 1000);
 
+        // ==========================================
+        // نظام زر الرجوع للهاتف (Hardware Back Button)
+        // ==========================================
         window.history.pushState({ app: 'running' }, '', '');
 
         let backPressCount = 0;
@@ -1472,24 +1809,40 @@
             
             let actionTaken = false;
 
+            // 1. القائمة الجانبية
             if (sideMenu && sideMenu.classList.contains('open')) {
                 toggleMenu();
                 actionTaken = true;
             }
+            // 2. نافذة (عن التطبيق)
             else if (aboutModal && aboutModal.style.display === 'flex') {
                 closeAboutModal();
                 actionTaken = true;
             }
-            else if (audioPlayer && !audioPlayer.classList.contains('hidden-view')) {
+            // 3. شاشات تفاصيل المنشور
+            if (!actionTaken) {
+                const postDetailsViews = document.querySelectorAll('.post-details-view');
+                for (let v of postDetailsViews) {
+                    if (!v.classList.contains('hidden-view')) {
+                        goBackToFeed();
+                        actionTaken = true;
+                        break;
+                    }
+                }
+            }
+            // 4. المشغل الصوتي
+            if (!actionTaken && audioPlayer && !audioPlayer.classList.contains('hidden-view')) {
                 goBackFromAudioPlayer();
                 actionTaken = true;
             }
-            else if (sermonDetails && !sermonDetails.classList.contains('hidden-view')) {
+            // 5. تفاصيل الخطبة
+            if (!actionTaken && sermonDetails && !sermonDetails.classList.contains('hidden-view')) {
                 goBackToJumuahList();
                 actionTaken = true;
             }
-            else {
-                const seriesViews = document.querySelectorAll('.series-view:not(#view-sermon-details)');
+            // 6. قوائم السلاسل (داخل الدروس)
+            if (!actionTaken) {
+                const seriesViews = document.querySelectorAll('.series-view:not(#view-sermon-details):not(.post-details-view)');
                 for(let v of seriesViews) {
                     if (!v.classList.contains('hidden-view')) {
                         goBackToLessons();
@@ -1499,6 +1852,7 @@
                 }
             }
             
+            // 7. قوائم القرآن الداخلية
             if (!actionTaken) {
                 const quranSeriesViews = document.querySelectorAll('.quran-series-view:not(#view-audio-player)');
                 for(let v of quranSeriesViews) {
@@ -1511,6 +1865,7 @@
                 }
             }
             
+            // 8. أقسام القرآن الرئيسية
             if (!actionTaken) {
                 const quranSectionViews = document.querySelectorAll('.quran-section-view');
                 for(let v of quranSectionViews) {
@@ -1522,8 +1877,9 @@
                 }
             }
             
+            // 9. الصفحات الفرعية من الرئيسية
             if (!actionTaken) {
-                const nonTabViews = ['view-circles', 'view-lessons', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes'];
+                const nonTabViews = ['view-circles', 'view-lessons', 'view-settings', 'view-notifications', 'view-suggestions', 'view-donations', 'view-sisters', 'view-disputes', 'view-feed'];
                 for(let v of nonTabViews) {
                     const el = document.getElementById(v);
                     if (el && !el.classList.contains('hidden-view')) {
@@ -1534,6 +1890,7 @@
                 }
             }
             
+            // 10. التابات السفلية (ما عدا الرئيسية)
             if (!actionTaken) {
                 const otherTabs = ['view-activities', 'view-quran', 'view-library'];
                 for(let v of otherTabs) {
@@ -1546,21 +1903,25 @@
                 }
             }
             
+            // 11. الشاشة الرئيسية (الخروج من التطبيق)
             if (!actionTaken) {
                 if (backPressCount === 0) {
                     backPressCount++;
                     showToast("اضغط مرة أخرى للخروج من التطبيق");
                     
+                    // إعادة دفع الحالة عشان ميقفلش
                     window.history.pushState({ app: 'running' }, '', '');
                     
                     backPressTimer = setTimeout(() => {
                         backPressCount = 0;
                     }, 2000);
                 } else {
+                    // الخروج الفعلي
                     clearTimeout(backPressTimer);
                     window.history.back(); 
                 }
             } else {
+                // لو قمنا بأي أكشن (قفلنا شاشة)، نرجع نحط State تاني عشان نحتفظ بنظام الرجوع
                 window.history.pushState({ app: 'running' }, '', '');
             }
         });
@@ -1588,7 +1949,7 @@
             toast.innerText = message;
             toast.style.display = 'block';
             
-            void toast.offsetWidth; 
+            void toast.offsetWidth; // Trigger reflow
             toast.style.opacity = '1';
             
             setTimeout(() => {
